@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Frankincense & Olive | اللبان والزيتون | Λιβάνι & Ελιά</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Amiri', system-ui, sans-serif;
+            background: #fef8ed;
+            color: #2c241a;
+            scroll-behavior: smooth;
+            transition: all 0.2s;
+        }
+        /* شريط التنقل متعدد اللغات */
+        .navbar {
+            background: #1e3a3f;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #e6c87a, #c9a03d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .language-switch {
+            display: flex;
+            gap: 0.7rem;
+        }
+        .lang-btn {
+            background: #406e6b;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: 0.2s;
+        }
+        .lang-btn.active {
+            background: #d4af37;
+            color: #1e3a3f;
+        }
+        .lang-btn:hover {
+            background: #b48c3a;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #f0e2c5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .container {
+            max-width: 1300px;
+            margin: auto;
+            padding: 2rem;
+        }
+        section {
+            background: rgba(255, 252, 240, 0.9);
+            border-radius: 36px;
+            padding: 1.8rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+        }
+        h2 {
+            font-size: 1.9rem;
+            border-right: 8px solid #d4af37;
+            padding-right: 1rem;
+            margin-bottom: 1.2rem;
+            color: #2c4c4b;
+        }
+        .two-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        .card {
+            flex: 1;
+            min-width: 240px;
+            background: white;
+            border-radius: 28px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .real-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+            background: #ddd;
+        }
+        .badge {
+            background: #e9dbc9;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+        footer {
+            background: #1e3a3f;
+            color: #ddd2bc;
+            text-align: center;
+            padding: 1.8rem;
+        }
+        .lang-content {
+            display: none;
+        }
+        .lang-content.active-lang {
+            display: block;
+        }
+        button, .lang-btn {
+            cursor: pointer;
+        }
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">🌿 Frankincense & Olive | اللبان والزيتون | Λιβάνι & Ελιά</div>
+    <div class="language-switch">
+        <button class="lang-btn active" data-lang="ar">🇸🇦 العربية</button>
+        <button class="lang-btn" data-lang="en">🇬🇧 English</button>
+        <button class="lang-btn" data-lang="el">🇬🇷 Ελληνικά</button>
+    </div>
+    <div class="nav-links" id="navLinks"></div>
+</nav>
+
+<div class="container">
+    <!-- المحتوى لكل لغة -->
+    <!-- اللغة العربية (default) -->
+    <div id="lang-ar" class="lang-content active-lang" dir="rtl">
+        <!-- المحتوى العربي الكامل -->
+        <div style="text-align:center;"><h1>🇴🇲 🇬🇷 اللبان والزيتون: جذور تمتد بين عُمان واليونان</h1><p>موقع يوثق أوجه التراث المادي وغير المادي بين ضفتي البحر</p></div>
+
+        <section id="unesco-ar"><h2>🏛️ مواقع اليونسكو</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg?auto=compress&cs=tinysrgb&w=600" alt="بهلاء"><div class="badge">🇴🇲 عُمان</div><h3>قلعة بهلاء</h3><p>أول موقع عُماني في قائمة التراث العالمي.</p></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg?auto=compress&cs=tinysrgb&w=600" alt="أكروبوليس"><div class="badge">🇬🇷 اليونان</div><h3>أكروبوليس أثينا</h3><p>رمز الحضارة الكلاسيكية.</p></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1284248/pexels-photo-1284248.jpeg?auto=compress&cs=tinysrgb&w=600" alt="قلهات"><div class="badge">🇴🇲 عُمان</div><h3>مدينة قلهات</h3><p>ميناء تاريخي على بحر العرب.</p></div></div></section>
+        
+        <section id="language-ar"><h2>📖 كلمات متشابهة</h2><div class="two-grid"><div class="card">صندوق - σαντούκι (sandoúki)<br>قلب - καρδιά (kardiá)<br>قيراط - καράτι (karáti)</div><div class="card">القافلة - καραβάνι<br>زيت - λάδι (ladi)</div></div></section>
+        
+        <section id="arts-ar"><h2>🎨 دمج الزخارف</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg?auto=compress&cs=tinysrgb&w=600" style="max-height:200px; width:100%; object-fit:cover; border-radius:28px;"><p>المفتاح اليوناني يلتقي بالوردة العمانية في الحلي والفخار.</p></section>
+        
+        <section id="music-ar"><h2>🎵 الأغاني الشعبية</h2><div class="two-grid"><div class="card">🇴🇲 العرضة العمانية - الطبول والسيوف.</div><div class="card">🇬🇷 السيرتاكي - رقص الزوربا الشهير.</div></div><p>كلاهما يعبران عن الكرم والبطولة.</p></section>
+        
+        <section id="intangible-ar"><h2>🤝 التراث غير المادي</h2><div class="two-grid"><div class="card">القهوة العمانية بالهيل واللبان.</div><div class="card">الضيف أولاً - φιλοξενία في اليونان.</div></div></section>
+        
+        <section id="crafts-ar"><h2>🪡 الحرف التقليدية</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg?auto=compress&cs=tinysrgb&w=600"><p>الخنجر العماني - الفخار اليوناني - النسيج المشترك.</p></section>
+    </div>
+
+    <!-- ENGLISH VERSION -->
+    <div id="lang-en" class="lang-content" dir="ltr">
+        <div style="text-align:center;"><h1>🇴🇲 🇬🇷 Frankincense & Olive: Oman & Greece Heritage</h1><p>UNESCO sites, language similarities, crafts, music, and intangible legacy</p></div>
+        <section><h2>🏛️ UNESCO Sites</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg?auto=compress&cs=tinysrgb&w=600"><h3>Bahla Fort, Oman</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg?auto=compress&cs=tinysrgb&w=600"><h3>Acropolis, Greece</h3></div></div></section>
+        <section><h2>📖 Shared Words</h2><p>sandoúki (σαντούκι) from Arabic "sanduq" ❤️ kardia (heart) close to "qalb"</p></section>
+        <section><h2>🎨 Decorative Arts Fusion</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg?auto=compress&cs=tinysrgb&w=600"><p>Greek key & Omani rose motifs blended in pottery</p></section>
+        <section><h2>🎵 Folk Music</h2><p>Omani Al-ʿArḍa 🥁 vs Greek Sirtaki 🎶 — both celebrate hospitality</p></section>
+        <section><h2>🤝 Intangible Heritage</h2><p>Omani coffee (Qahwa) & Greek Philoxenia (love of strangers).</p></section>
+        <section><h2>🪡 Traditional Crafts</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg?auto=compress&cs=tinysrgb&w=600"><p>Silver Khanjar & Greek ceramic art</p></section>
+    </div>
+
+    <!-- GREEK VERSION (Ελληνικά) -->
+    <div id="lang-el" class="lang-content" dir="ltr">
+        <div style="text-align:center;"><h1>🇴🇲 🇬🇷 Λιβάνι & Ελιά: Πολιτιστική κληρονομιά Ομάν & Ελλάδας</h1><p>Μνημεία UNESCO, κοινές λέξεις, μουσική, χειροτεχνίες</p></div>
+        <section><h2>🏛️ Μνημεία UNESCO</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg?auto=compress&cs=tinysrgb&w=600"><h3>Μπάχλα Φρούριο - Ομάν</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg?auto=compress&cs=tinysrgb&w=600"><h3>Ακρόπολη Αθηνών</h3></div></div></section>
+        <section><h2>📖 Κοινές λέξεις</h2><p>σαντούκι (από την αραβική sanduq) ❤️ καρδιά - καρδιά / qalb ομοιότητα</p></section>
+        <section><h2>🎨 Συγχώνευση διακοσμήσεων</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg?auto=compress&cs=tinysrgb&w=600"><p>Ελληνικό μαιάνδρο & Ομανικό ρόδο</p></section>
+        <section><h2>🎵 Δημοτικά τραγούδια</h2><p>Al-Arda του Ομάν & Σιρτάκι - Ελλάδα</p></section>
+        <section><h2>🤝 Άυλη κληρονομιά</h2><p>Καφές Ομάν & Φιλοξενία (Ελλάδα)</p></section>
+        <section><h2>🪡 Παραδοσιακές χειροτεχνίες</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg?auto=compress&cs=tinysrgb&w=600"><p>Ασημένιο Χαντζάρ & ελληνική κεραμική</p></section>
+    </div>
+</div>
+
+<footer>
+    <p id="footerText">🌍 Frankincense & Olive — جسور بين عُمان واليونان | 2026</p>
+</footer>
+
+<script>
+    // إدارة تعدد اللغات
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const contents = {
+        ar: document.getElementById('lang-ar'),
+        en: document.getElementById('lang-en'),
+        el: document.getElementById('lang-el')
+    };
+    
+    // روابط التنقل حسب اللغة
+    const navLinksContainer = document.getElementById('navLinks');
+    const navData = {
+        ar: [
+            {name:"اليونسكو", hash:"unesco-ar"},{name:"اللغة", hash:"language-ar"},{name:"الزخارف", hash:"arts-ar"},
+            {name:"الموسيقى", hash:"music-ar"},{name:"التراث غير المادي", hash:"intangible-ar"},{name:"الحرف", hash:"crafts-ar"}
+        ],
+        en: [
+            {name:"UNESCO", hash:"unesco-en"},{name:"Language", hash:"language-en"},{name:"Arts", hash:"arts-en"},
+            {name:"Music", hash:"music-en"},{name:"Intangible", hash:"intangible-en"},{name:"Crafts", hash:"crafts-en"}
+        ],
+        el: [
+            {name:"UNESCO", hash:"unesco-el"},{name:"Λέξεις", hash:"language-el"},{name:"Διακόσμηση", hash:"arts-el"},
+            {name:"Μουσική", hash:"music-el"},{name:"Άυλη", hash:"intangible-el"},{name:"Χειροτεχνίες", hash:"crafts-el"}
+        ]
+    };
+    
+    function updateNav(lang) {
+        let links = navData[lang];
+        if(!links) links = navData.ar;
+        navLinksContainer.innerHTML = '';
+        links.forEach(link => {
+            const a = document.createElement('a');
+            a.href = `#${link.hash}`;
+            a.textContent = link.name;
+            a.style.color = "#f0e2c5";
+            a.style.textDecoration = "none";
+            a.style.margin = "0 5px";
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.getElementById(link.hash);
+                if(target) target.scrollIntoView({behavior:"smooth"});
+            });
+            navLinksContainer.appendChild(a);
+        });
+    }
+    
+    function switchLanguage(lang) {
+        Object.keys(contents).forEach(l => {
+            contents[l].classList.remove('active-lang');
+        });
+        contents[lang].classList.add('active-lang');
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        updateNav(lang);
+        langBtns.forEach(btn => {
+            if(btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+        // تغيير عنوان الصفحة
+        if(lang === 'ar') document.title = "اللبان والزيتون | تراث عُمان واليونان";
+        else if(lang === 'en') document.title = "Frankincense & Olive | Oman Greece Heritage";
+        else document.title = "Λιβάνι & Ελιά | Ομάν & Ελλάδα";
+    }
+    
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            switchLanguage(lang);
+        });
+    });
+    
+    // بداية التشغيل بالعربية
+    switchLanguage('ar');
+    
+    // إصلاح المعرفات section في الإنجليزية واليونانية (لضمان وجود عناصر)
+    if(!document.getElementById('unesco-en')) {
+        const secEn = document.querySelector('#lang-en section');
+        if(secEn) secEn.id = "unesco-en";
+    }
+    if(!document.getElementById('unesco-el')) {
+        const secEl = document.querySelector('#lang-el section');
+        if(secEl) secEl.id = "unesco-el";
+    }
+    // بسيط جداً لكن الموقع جاهز
+</script>
+</body>
+</html>
