@@ -8,7 +8,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', 'Amiri', Tahoma, sans-serif; background: linear-gradient(135deg, #fef5e7 0%, #f0e6d2 100%); color: #2c241a; overflow-x: hidden; }
         
-        /* أنيميشن للظهور */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -29,7 +28,6 @@
         .page { display: none; min-height: 80vh; padding: 2rem; max-width: 1400px; margin: auto; }
         .page.active { display: block; }
         
-        /* الهيرو */
         .hero { text-align: center; padding: 3rem; background: linear-gradient(135deg, #2c4c4b, #1e3a3f); border-radius: 60px; color: white; margin-bottom: 3rem; position: relative; overflow: hidden; }
         .hero::before { content: "🏛️"; position: absolute; font-size: 8rem; opacity: 0.1; bottom: -20px; left: -20px; }
         .hero::after { content: "🏺"; position: absolute; font-size: 6rem; opacity: 0.1; top: -20px; right: -20px; }
@@ -41,7 +39,7 @@
         .country-card .img-placeholder { width: 100%; height: 230px; background: linear-gradient(135deg, #d4af37, #b7772e); display: flex; align-items: center; justify-content: center; font-size: 5rem; color: white; transition: 0.3s; }
         .country-card:hover .img-placeholder { transform: scale(1.05); }
         
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; margin: 2rem 0; }
         .heritage-card { background: white; border-radius: 32px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1); cursor: pointer; transition: all 0.3s; position: relative; }
         .heritage-card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px rgba(0,0,0,0.15); }
         .heritage-card::before { content: "🏛️"; position: absolute; bottom: 15px; right: 15px; font-size: 2rem; opacity: 0.1; }
@@ -52,10 +50,9 @@
         .theme-oman { background: linear-gradient(145deg, #fef0df, #fae6ce); }
         .theme-greece { background: linear-gradient(145deg, #e8f0f5, #daeaf1); }
         
-        /* صفحة المعلومات المبهرة */
         .info-page { background: white; border-radius: 48px; padding: 2rem; margin-top: 1rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .info-page h2 { font-size: 2.5rem; color: #2c4c4b; margin-bottom: 1rem; text-align: center; }
-        .fact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .fact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
         .fact-card { background: linear-gradient(135deg, #fef5e7, #f0e6d2); border-radius: 24px; padding: 1rem; text-align: center; transition: 0.3s; }
         .fact-card:hover { transform: translateY(-5px); }
         .fact-card .fact-icon { font-size: 2rem; margin-bottom: 0.5rem; }
@@ -63,20 +60,21 @@
         .map-container { margin: 1.5rem 0; border-radius: 24px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .map-container iframe { width: 100%; height: 400px; border: none; }
         .map-btn { display: inline-block; background: linear-gradient(135deg, #1e3a3f, #2c4c4b); color: white; padding: 0.8rem 1.8rem; border-radius: 50px; text-decoration: none; margin: 1rem 0; transition: 0.3s; }
-        .map-btn:hover { transform: scale(1.05); background: linear-gradient(135deg, #2c4c4b, #1e3a3f); }
+        .map-btn:hover { transform: scale(1.05); }
         .coordinates { background: linear-gradient(135deg, #d4af37, #c9a03d); padding: 0.8rem; border-radius: 20px; margin: 1rem 0; font-family: monospace; text-align: center; color: #1e3a3f; font-weight: bold; }
         footer { background: #1e3a3f; color: #ddd2bc; text-align: center; padding: 1.5rem; margin-top: 2rem; }
         .arts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin: 1rem 0; }
         .art-card { background: white; border-radius: 28px; padding: 1.2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: 0.3s; text-align: center; }
         .art-card:hover { transform: translateY(-5px); }
         .art-placeholder { width: 100%; height: 180px; background: linear-gradient(135deg, #d4af37, #b7772e); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white; margin-bottom: 1rem; }
+        .intangible-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin: 1rem 0; }
         @media (max-width: 700px) { .navbar { flex-direction: column; text-align: center; } .page { padding: 1rem; } .map-container iframe { height: 300px; } .info-page h2 { font-size: 1.8rem; } }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="logo">🏛️ مواقع اليونسكو | UNESCO World Heritage</div>
+    <div class="logo" data-key="logo_title">🏛️ مواقع اليونسكو | UNESCO World Heritage</div>
     <div class="nav-links">
         <a data-page="home" class="active" data-key="nav_home">🏠 الرئيسية</a>
         <a data-page="oman" data-key="nav_oman">🇴🇲 عُمان</a>
@@ -99,12 +97,12 @@
         <div class="country-card" data-country="oman">
             <div class="img-placeholder">🇴🇲</div>
             <h2 data-key="card_oman">سلطنة عُمان</h2>
-            <p data-key="card_oman_sub">قلعة بهلاء | قلهات | الأفلاج | حصون نزوى وجبرين</p>
+            <p data-key="card_oman_sub">4 مواقع يونسكو | قلعة بهلاء - قلهات - الأفلاج - حصن نزوى</p>
         </div>
         <div class="country-card" data-country="greece">
             <div class="img-placeholder">🇬🇷</div>
             <h2 data-key="card_greece">اليونان</h2>
-            <p data-key="card_greece_sub">أكروبوليس أثينا | أولمبيا | رودس | ميتيورا</p>
+            <p data-key="card_greece_sub">19 موقع يونسكو | أكروبوليس - أولمبيا - رودس - ميتيورا - دلفي</p>
         </div>
     </div>
 </div>
@@ -112,11 +110,14 @@
 <!-- صفحة عُمان -->
 <div id="oman-page" class="page theme-oman">
     <button class="back-home" onclick="showPage('home')" data-key="back_home">🏠 العودة للرئيسية</button>
-    <h1 class="section-title" data-key="oman_title">🇴🇲 مواقع التراث العماني</h1>
+    <h1 class="section-title" data-key="oman_title">🇴🇲 مواقع التراث العماني (اليونسكو)</h1>
     <div class="cards-grid" id="oman-cards"></div>
     
     <h2 class="section-title" data-key="oman_arts_title">🎨 الزخارف العمانية التقليدية</h2>
     <div class="arts-grid" id="oman-arts"></div>
+    
+    <h2 class="section-title" data-key="intangible_title">🤝 التراث غير المادي في عُمان</h2>
+    <div class="cards-grid" id="oman-intangible"></div>
     
     <h2 class="section-title" data-key="shared_words_title">📖 كلمات عربية ويونانية متشابهة</h2>
     <div class="cards-grid" id="shared-words"></div>
@@ -125,11 +126,14 @@
 <!-- صفحة اليونان -->
 <div id="greece-page" class="page theme-greece">
     <button class="back-home" onclick="showPage('home')" data-key="back_home">🏠 العودة للرئيسية</button>
-    <h1 class="section-title" data-key="greece_title">🇬🇷 مواقع التراث اليوناني</h1>
+    <h1 class="section-title" data-key="greece_title">🇬🇷 مواقع التراث اليوناني (اليونسكو)</h1>
     <div class="cards-grid" id="greece-cards"></div>
     
     <h2 class="section-title" data-key="greece_arts_title">🎨 الزخارف اليونانية التقليدية</h2>
     <div class="arts-grid" id="greece-arts"></div>
+    
+    <h2 class="section-title" data-key="intangible_title_greece">🎭 التراث غير المادي في اليونان</h2>
+    <div class="cards-grid" id="greece-intangible"></div>
 </div>
 
 <!-- صفحة المعلومات -->
@@ -146,111 +150,165 @@
     // ========== الترجمات الكاملة ==========
     const translations = {
         ar: {
+            logo_title: "🏛️ مواقع اليونسكو | تراث عُمان واليونان",
             nav_home: "🏠 الرئيسية", nav_oman: "🇴🇲 عُمان", nav_greece: "🇬🇷 اليونان",
-            hero_title: "🇴🇲 🇬🇷 تراث الإنسانية المشترك", hero_sub: "مواقع اليونسكو في سلطنة عُمان واليونان | جسور ثقافية تمتد لآلاف السنين",
-            card_oman: "سلطنة عُمان", card_oman_sub: "قلعة بهلاء | قلهات | الأفلاج | حصون نزوى وجبرين",
-            card_greece: "اليونان", card_greece_sub: "أكروبوليس أثينا | أولمبيا | رودس | ميتيورا",
-            oman_title: "🇴🇲 مواقع التراث العماني", greece_title: "🇬🇷 مواقع التراث اليوناني",
-            oman_arts_title: "🎨 الزخارف العمانية التقليدية", greece_arts_title: "🎨 الزخارف اليونانية التقليدية",
-            shared_words_title: "📖 كلمات عربية ويونانية متشابهة", back_home: "🏠 العودة للرئيسية",
+            hero_title: "🇴🇲 🇬🇷 تراث الإنسانية المشترك", 
+            hero_sub: "مواقع اليونسكو في سلطنة عُمان واليونان | جسور ثقافية تمتد لآلاف السنين",
+            card_oman: "سلطنة عُمان", card_oman_sub: "4 مواقع يونسكو | قلعة بهلاء - قلهات - الأفلاج - حصن نزوى",
+            card_greece: "اليونان", card_greece_sub: "19 موقع يونسكو | أكروبوليس - أولمبيا - رودس - ميتيورا",
+            oman_title: "🇴🇲 مواقع التراث العماني (اليونسكو)", 
+            greece_title: "🇬🇷 مواقع التراث اليوناني (اليونسكو)",
+            oman_arts_title: "🎨 الزخارف العمانية التقليدية", 
+            greece_arts_title: "🎨 الزخارف اليونانية التقليدية",
+            intangible_title: "🤝 التراث غير المادي في عُمان",
+            intangible_title_greece: "🎭 التراث غير المادي في اليونان",
+            shared_words_title: "📖 كلمات عربية ويونانية متشابهة", 
+            back_home: "🏠 العودة للرئيسية",
             footer: "🌍 مواقع التراث العالمي لليونسكو | جسور ثقافية بين عُمان واليونان © 2026",
+            unesco_badge: "🏛️ موقع يونسكو",
             info: "ℹ️ معلومات", best_time: "📅 أفضل وقت للزيارة", open_map: "🗺️ افتح الموقع على خرائط جوجل",
-            didyouknow: "✨ هل تعلم؟", history: "📜 التاريخ", location: "📍 الموقع"
+            didyouknow: "✨ هل تعلم؟", history: "📜 التاريخ", location: "📍 الموقع",
+            unesco_date: "📆 تاريخ التسجيل", unesco_criteria: "📋 معايير اليونسكو"
         },
         en: {
+            logo_title: "🏛️ UNESCO Sites | Oman & Greece Heritage",
             nav_home: "🏠 Home", nav_oman: "🇴🇲 Oman", nav_greece: "🇬🇷 Greece",
-            hero_title: "🇴🇲 🇬🇷 Shared Human Heritage", hero_sub: "UNESCO Sites in Oman & Greece | Cultural bridges spanning thousands of years",
-            card_oman: "Sultanate of Oman", card_oman_sub: "Bahla Fort | Qalhat | Aflaj | Nizwa & Jabrin Forts",
-            card_greece: "Greece", card_greece_sub: "Acropolis of Athens | Olympia | Rhodes | Meteora",
-            oman_title: "🇴🇲 Omani Heritage Sites", greece_title: "🇬🇷 Greek Heritage Sites",
-            oman_arts_title: "🎨 Traditional Omani Ornaments", greece_arts_title: "🎨 Traditional Greek Ornaments",
-            shared_words_title: "📖 Shared Arabic-Greek Words", back_home: "🏠 Back to Home",
+            hero_title: "🇴🇲 🇬🇷 Shared Human Heritage", 
+            hero_sub: "UNESCO Sites in Oman & Greece | Cultural bridges spanning thousands of years",
+            card_oman: "Sultanate of Oman", card_oman_sub: "4 UNESCO Sites | Bahla Fort - Qalhat - Aflaj - Nizwa Fort",
+            card_greece: "Greece", card_greece_sub: "19 UNESCO Sites | Acropolis - Olympia - Rhodes - Meteora",
+            oman_title: "🇴🇲 Omani UNESCO World Heritage Sites", 
+            greece_title: "🇬🇷 Greek UNESCO World Heritage Sites",
+            oman_arts_title: "🎨 Traditional Omani Ornaments", 
+            greece_arts_title: "🎨 Traditional Greek Ornaments",
+            intangible_title: "🤝 Intangible Heritage of Oman",
+            intangible_title_greece: "🎭 Intangible Heritage of Greece",
+            shared_words_title: "📖 Shared Arabic-Greek Words", 
+            back_home: "🏠 Back to Home",
             footer: "🌍 UNESCO World Heritage Sites | Cultural Bridges between Oman & Greece © 2026",
+            unesco_badge: "🏛️ UNESCO Site",
             info: "ℹ️ Info", best_time: "📅 Best time to visit", open_map: "🗺️ Open on Google Maps",
-            didyouknow: "✨ Did you know?", history: "📜 History", location: "📍 Location"
+            didyouknow: "✨ Did you know?", history: "📜 History", location: "📍 Location",
+            unesco_date: "📆 Inscription date", unesco_criteria: "📋 UNESCO criteria"
         },
         el: {
+            logo_title: "🏛️ Μνημεία UNESCO | Κληρονομιά Ομάν & Ελλάδας",
             nav_home: "🏠 Αρχική", nav_oman: "🇴🇲 Ομάν", nav_greece: "🇬🇷 Ελλάδα",
-            hero_title: "🇴🇲 🇬🇷 Κοινή Ανθρώπινη Κληρονομιά", hero_sub: "Μνημεία UNESCO σε Ομάν & Ελλάδα | Πολιτιστικές γέφυρες χιλιάδων ετών",
-            card_oman: "Σουλτανάτο του Ομάν", card_oman_sub: "Μπάχλα | Καλχάτ | Αφλάζ | Νίζουα & Τζαμπρίν",
-            card_greece: "Ελλάδα", card_greece_sub: "Ακρόπολη | Ολυμπία | Ρόδος | Μετέωρα",
-            oman_title: "🇴🇲 Μνημεία Ομάν", greece_title: "🇬🇷 Μνημεία Ελλάδας",
-            oman_arts_title: "🎨 Παραδοσιακά Ομανικά Στολίδια", greece_arts_title: "🎨 Παραδοσιακά Ελληνικά Στολίδια",
-            shared_words_title: "📖 Κοινές Λέξεις Αραβικών-Ελληνικών", back_home: "🏠 Επιστροφή στην Αρχική",
+            hero_title: "🇴🇲 🇬🇷 Κοινή Ανθρώπινη Κληρονομιά", 
+            hero_sub: "Μνημεία UNESCO σε Ομάν & Ελλάδα | Πολιτιστικές γέφυρες χιλιάδων ετών",
+            card_oman: "Σουλτανάτο του Ομάν", card_oman_sub: "4 Μνημεία UNESCO | Μπάχλα - Καλχάτ - Αφλάζ - Νίζουα",
+            card_greece: "Ελλάδα", card_greece_sub: "19 Μνημεία UNESCO | Ακρόπολη - Ολυμπία - Ρόδος - Μετέωρα",
+            oman_title: "🇴🇲 Μνημεία UNESCO στο Ομάν", 
+            greece_title: "🇬🇷 Μνημεία UNESCO στην Ελλάδα",
+            oman_arts_title: "🎨 Παραδοσιακά Ομανικά Στολίδια", 
+            greece_arts_title: "🎨 Παραδοσιακά Ελληνικά Στολίδια",
+            intangible_title: "🤝 Άυλη Κληρονομιά του Ομάν",
+            intangible_title_greece: "🎭 Άυλη Κληρονομιά της Ελλάδας",
+            shared_words_title: "📖 Κοινές Λέξεις Αραβικών-Ελληνικών", 
+            back_home: "🏠 Επιστροφή στην Αρχική",
             footer: "🌍 Μνημεία Παγκόσμιας Κληρονομιάς UNESCO | Πολιτιστικές Γέφυρες © 2026",
+            unesco_badge: "🏛️ Μνημείο UNESCO",
             info: "ℹ️ Πληροφορίες", best_time: "📅 Καλύτερη επίσκεψη", open_map: "🗺️ Άνοιγμα στους Χάρτες Google",
-            didyouknow: "✨ Το γνωρίζατε;", history: "📜 Ιστορία", location: "📍 Τοποθεσία"
+            didyouknow: "✨ Το γνωρίζατε;", history: "📜 Ιστορία", location: "📍 Τοποθεσία",
+            unesco_date: "📆 Ημερομηνία εγγραφής", unesco_criteria: "📋 Κριτήρια UNESCO"
         }
     };
 
-    // بيانات المواقع مع معلومات مبهرة
+    // بيانات المواقع مع معلومات يونسكو مفصلة
     const sitesData = {
         bahla: { 
             name_ar:"قلعة بهلاء", name_en:"Bahla Fort", name_el:"Φρούριο Μπάχλα", 
             lat:"22.964600", lng:"57.299200",
-            info_ar:"🏰 <strong>قلعة بهلاء</strong> هي واحدة من أقدم القلاع الطينية في العالم، يعود تاريخها إلى القرن الثالث عشر الميلادي. تم تسجيلها كأول موقع عماني في قائمة اليونسكو عام 1987. القلعة محاطة بسور طوله 13 كيلومتراً!",
-            info_en:"🏰 <strong>Bahla Fort</strong> is one of the oldest mud-brick forts in the world, dating back to the 13th century. It was the first Omani site inscribed on the UNESCO list in 1987. The fort is surrounded by a 13-kilometer wall!",
-            info_el:"🏰 <strong>Φρούριο Μπάχλα</strong> είναι ένα από τα παλαιότερα πήλινα φρούρια στον κόσμο, που χρονολογείται από τον 13ο αιώνα.",
-            didyouknow_ar:"🌟 هل تعلم؟ أسوار القلعة تمتد لـ 13 كيلومتراً، وتحتوي على 132 برجاً للمراقبة!",
-            didyouknow_en:"🌟 Did you know? The fort's walls extend for 13 kilometers and contain 132 watchtowers!",
-            didyouknow_el:"🌟 Το γνωρίζατε; Τα τείχη εκτείνονται για 13 χιλιόμετρα!",
-            visit_ar:"أفضل وقت: أكتوبر إلى أبريل (الطقس معتدل 20-30°م)", 
-            visit_en:"Best visit: October to April (mild weather 20-30°C)", 
-            visit_el:"Καλύτερη επίσκεψη: Οκτώβριος έως Απρίλιος" 
+            unesco_date_ar:"1987", unesco_date_en:"1987", unesco_date_el:"1987",
+            unesco_criteria_ar:"معايير (iv) - تحفة فنية فريدة", 
+            unesco_criteria_en:"Criteria (iv) - Unique artistic masterpiece",
+            unesco_criteria_el:"Κριτήριο (iv) - Μοναδικό καλλιτέχνημα",
+            info_ar:"🏰 <strong>قلعة بهلاء</strong> هي أول موقع عماني يسجل في قائمة اليونسكو عام 1987. القلعة محاطة بسور طوله 13 كيلومتراً!",
+            info_en:"🏰 <strong>Bahla Fort</strong> was the first Omani site inscribed on the UNESCO list in 1987. The fort is surrounded by a 13-kilometer wall!",
+            info_el:"🏰 <strong>Φρούριο Μπάχλα</strong> το πρώτο μνημείο του Ομάν στην UNESCO το 1987.",
+            didyouknow_ar:"🌟 أسوار القلعة تمتد لـ 13 كيلومتراً، وتحتوي على 132 برجاً للمراقبة!",
+            didyouknow_en:"🌟 The fort's walls extend for 13 kilometers and contain 132 watchtowers!",
+            didyouknow_el:"🌟 Τα τείχη εκτείνονται για 13 χιλιόμετρα!",
+            visit_ar:"أكتوبر إلى أبريل (الطقس معتدل 20-30°م)", 
+            visit_en:"October to April (mild weather 20-30°C)", 
+            visit_el:"Οκτώβριος έως Απρίλιος" 
         },
         nizwa: { 
             name_ar:"حصن نزوى", name_en:"Nizwa Fort", name_el:"Φρούριο Νίζουα", 
             lat:"22.933300", lng:"57.533300",
-            info_ar:"🛡️ <strong>حصن نزوى</strong> بني عام 1650م، ويضم أكبر برج دائري في عُمان بقطر 45 متراً! يمكنك رؤية مدينة نزوى بأكملها من قمة البرج. كان الحصن مقراً للحكم ومخزناً للأسلحة والتمور.",
-            info_en:"🛡️ <strong>Nizwa Fort</strong> was built in 1650 AD and features the largest circular tower in Oman, 45 meters in diameter! You can see all of Nizwa city from the tower's top.",
-            info_el:"🛡️ <strong>Φρούριο Νίζουα</strong> χτίστηκε το 1650 μ.Χ. και διαθέτει τον μεγαλύτερο κυκλικό πύργο στο Ομάν.",
-            didyouknow_ar:"🌟 هل تعلم؟ برج الحصن الدائري ليس له زوايا حادة، مما جعله يصمد أمام الزلازل والهجمات لقرون!",
-            didyouknow_en:"🌟 Did you know? The fort's circular tower has no sharp corners, which helped it withstand earthquakes and attacks for centuries!",
-            didyouknow_el:"🌟 Το γνωρίζατε; Ο κυκλικός πύργος δεν έχει γωνίες!",
-            visit_ar:"أفضل وقت: سبتمبر إلى مايو (تجنب حرارة منتصف الصيف)", 
-            visit_en:"Best visit: September to May (avoid midsummer heat)", 
+            unesco_date_ar:"قيد الترشيح", unesco_date_en:"Tentative List", unesco_date_el:"Υποψήφιο",
+            unesco_criteria_ar:"موقع تراثي بارز", unesco_criteria_en:"Outstanding heritage site", unesco_criteria_el:"Σημαντική κληρονομιά",
+            info_ar:"🛡️ <strong>حصن نزوى</strong> بني عام 1650م، ويضم أكبر برج دائري في عُمان بقطر 45 متراً!",
+            info_en:"🛡️ <strong>Nizwa Fort</strong> was built in 1650 AD and features the largest circular tower in Oman, 45 meters in diameter!",
+            info_el:"🛡️ <strong>Φρούριο Νίζουα</strong> χτίστηκε το 1650 μ.Χ. με τον μεγαλύτερο κυκλικό πύργο.",
+            didyouknow_ar:"🌟 البرج الدائري ليس له زوايا حادة، مما جعله يصمد أمام الزلازل لقرون!",
+            didyouknow_en:"🌟 The circular tower has no sharp corners, helping it withstand earthquakes for centuries!",
+            didyouknow_el:"🌟 Ο κυκλικός πύργος δεν έχει γωνίες!",
+            visit_ar:"سبتمبر إلى مايو (تجنب حرارة الصيف)", 
+            visit_en:"September to May (avoid summer heat)", 
             visit_el:"Σεπτέμβριος έως Μάιος" 
         },
         acropolis: { 
             name_ar:"أكروبوليس أثينا", name_en:"Acropolis of Athens", name_el:"Ακρόπολη Αθηνών", 
             lat:"37.971500", lng:"23.725700",
-            info_ar:"🏛️ <strong>أكروبوليس أثينا</strong> يقع على تلة ارتفاعها 156 متراً، ويضم معبد البارثينون الشهير الذي بني بين 447-432 ق.م. يعتبر رمزاً للحضارة الغربية ومهد الديمقراطية. تم ترميمه أكثر من 3 مرات عبر التاريخ.",
-            info_en:"🏛️ <strong>Acropolis of Athens</strong> sits on a 156-meter-high hill and houses the famous Parthenon temple, built between 447-432 BC. It is considered a symbol of Western civilization and the birthplace of democracy.",
-            info_el:"🏛️ <strong>Ακρόπολη Αθηνών</strong> βρίσκεται σε λόφο ύψους 156 μέτρων και φιλοξενεί τον Παρθενώνα.",
-            didyouknow_ar:"🌟 هل تعلم؟ البارثينون بني بدون أي أساسات خشبية، وجميع أعمدة منحنية قليلاً لتصحيح الوهم البصري!",
-            didyouknow_en:"🌟 Did you know? The Parthenon was built without any wooden foundations, and all its columns are slightly curved to correct optical illusion!",
-            didyouknow_el:"🌟 Το γνωρίζατε; Ο Παρθενώνας χτίστηκε χωρίς ξύλινα θεμέλια!",
-            visit_ar:"أفضل وقت: مارس-مايو، سبتمبر-نوفمبر (تجنب حرارة يوليو)", 
-            visit_en:"March-May, September-November (avoid July heat)", 
+            unesco_date_ar:"1987", unesco_date_en:"1987", unesco_date_el:"1987",
+            unesco_criteria_ar:"معايير (i)(ii)(iii)(iv)(vi) - تحفة معمارية عالمية",
+            unesco_criteria_en:"Criteria (i)(ii)(iii)(iv)(vi) - Universal architectural masterpiece",
+            unesco_criteria_el:"Κριτήρια (i)(ii)(iii)(iv)(vi) - Παγκόσμιο αριστούργημα",
+            info_ar:"🏛️ <strong>أكروبوليس أثينا</strong> يقع على تلة ارتفاعها 156 متراً، ويضم البارثينون رمز الحضارة الغربية.",
+            info_en:"🏛️ <strong>Acropolis of Athens</strong> sits on a 156-meter-high hill and houses the Parthenon, symbol of Western civilization.",
+            info_el:"🏛️ <strong>Ακρόπολη Αθηνών</strong> σε λόφο 156 μέτρων με τον Παρθενώνα.",
+            didyouknow_ar:"🌟 البارثينون بني بدون أي أساسات خشبية، وجميع أعمدة منحنية لتصحيح الوهم البصري!",
+            didyouknow_en:"🌟 The Parthenon was built without wooden foundations, with curved columns to correct optical illusion!",
+            didyouknow_el:"🌟 Ο Παρθενώνας χτίστηκε χωρίς ξύλινα θεμέλια!",
+            visit_ar:"مارس-مايو، سبتمبر-نوفمبر", 
+            visit_en:"March-May, September-November", 
             visit_el:"Μάρτιος-Μάιος, Σεπτέμβριος-Νοέμβριος" 
         },
         olympia: { 
             name_ar:"أولمبيا", name_en:"Olympia", name_el:"Ολυμπία", 
             lat:"37.638900", lng:"21.630500",
-            info_ar:"🏅 <strong>أولمبيا</strong> هي مهد الألعاب الأولمبية القديمة التي بدأت عام 776 ق.م. كان الرياضيون يتنافسون عراة، وكان الفائز يُكلل بإكليل من الزيتون البري. استمرت الألعاب لنحو 12 قرناً!",
-            info_en:"🏅 <strong>Olympia</strong> is the birthplace of the ancient Olympic Games which began in 776 BC. Athletes competed naked, and winners were crowned with a wreath of wild olive. The games continued for about 12 centuries!",
-            info_el:"🏅 <strong>Ολυμπία</strong> είναι η γενέτειρα των αρχαίων Ολυμπιακών Αγώνων που ξεκίνησαν το 776 π.Χ.",
-            didyouknow_ar:"🌟 هل تعلم؟ كانت النساء ممنوعات من حضور الألعاب القديمة تحت طائلة الموت!",
-            didyouknow_en:"🌟 Did you know? Women were forbidden from attending the ancient games under penalty of death!",
-            didyouknow_el:"🌟 Το γνωρίζατε; Απαγορευόταν στις γυναίκες να παρακολουθούν!",
-            visit_ar:"أفضل وقت: مايو إلى سبتمبر", 
-            visit_en:"May to September", 
-            visit_el:"Μάιος έως Σεπτέμβριος" 
+            unesco_date_ar:"1989", unesco_date_en:"1989", unesco_date_el:"1989",
+            unesco_criteria_ar:"معايير (i)(ii)(iii)(iv)(vi) - مهد الألعاب الأولمبية",
+            unesco_criteria_en:"Criteria (i)(ii)(iii)(iv)(vi) - Birthplace of the Olympic Games",
+            unesco_criteria_el:"Κριτήρια (i)(ii)(iii)(iv)(vi) - Γενέτειρα των Ολυμπιακών Αγώνων",
+            info_ar:"🏅 <strong>أولمبيا</strong> مهد الألعاب الأولمبية القديمة التي بدأت عام 776 ق.م، واستمرت لـ12 قرناً!",
+            info_en:"🏅 <strong>Olympia</strong> is the birthplace of the ancient Olympic Games which began in 776 BC, continuing for 12 centuries!",
+            info_el:"🏅 <strong>Ολυμπία</strong> γενέτειρα των αρχαίων Ολυμπιακών Αγώνων από το 776 π.Χ.!",
+            didyouknow_ar:"🌟 كانت النساء ممنوعات من حضور الألعاب القديمة تحت طائلة الموت!",
+            didyouknow_en:"🌟 Women were forbidden from attending the ancient games under penalty of death!",
+            didyouknow_el:"🌟 Απαγορευόταν στις γυναίκες να παρακολουθούν!",
+            visit_ar:"مايو إلى سبتمبر", visit_en:"May to September", visit_el:"Μάιος έως Σεπτέμβριος" 
         },
         meteora: { 
             name_ar:"ميتيورا", name_en:"Meteora", name_el:"Μετέωρα", 
             lat:"39.714100", lng:"21.631100",
-            info_ar:"⛰️ <strong>ميتيورا</strong> تعني 'معلقة في الهواء'، وتضم 6 أديرة أرثوذكسية مبنية على قمم صخور شاهقة يصل ارتفاعها إلى 600 متر! كانت الأديرة في الماضي لا يمكن الوصول إليها إلا بالسلالم والحبال.",
-            info_en:"⛰️ <strong>Meteora</strong> means 'suspended in the air', and contains 6 Orthodox monasteries built on top of towering rock pillars reaching up to 600 meters!",
-            info_el:"⛰️ <strong>Μετέωρα</strong> σημαίνει 'αιωρούμενα στον αέρα', με 6 μοναστήρια σε βράχους 600 μέτρων!",
-            didyouknow_ar:"🌟 هل تعلم؟ استخدم الرهبان السلال والرافعات لرفع المؤن والرهبان الجدد إلى قمم الصخور!",
-            didyouknow_en:"🌟 Did you know? Monks used baskets and winches to lift supplies and new monks to the rock tops!",
-            didyouknow_el:"🌟 Το γνωρίζατε; Οι μοναχοί χρησιμοποιούσαν καλάθια και βαρούλκα!",
-            visit_ar:"أفضل وقت: مايو إلى أكتوبر", 
-            visit_en:"May to October", 
-            visit_el:"Μάιος έως Οκτώβριος" 
+            unesco_date_ar:"1988", unesco_date_en:"1988", unesco_date_el:"1988",
+            unesco_criteria_ar:"معايير (i)(ii)(iv)(v)(vii) - أعجوبة طبيعية وثقافية",
+            unesco_criteria_en:"Criteria (i)(ii)(iv)(v)(vii) - Natural and cultural wonder",
+            unesco_criteria_el:"Κριτήρια (i)(ii)(iv)(v)(vii) - Φυσικό και πολιτιστικό θαύμα",
+            info_ar:"⛰️ <strong>ميتيورا</strong> تعني 'معلقة في الهواء'، تضم 6 أديرة على قمم صخور ارتفاعها 600 متر!",
+            info_en:"⛰️ <strong>Meteora</strong> means 'suspended in the air', with 6 monasteries on 600-meter rock pillars!",
+            info_el:"⛰️ <strong>Μετέωρα</strong> σημαίνει 'αιωρούμενα', με 6 μοναστήρια σε βράχους 600 μέτρων!",
+            didyouknow_ar:"🌟 استخدم الرهبان السلال والرافعات لرفع المؤن والرهبان الجدد!",
+            didyouknow_en:"🌟 Monks used baskets and winches to lift supplies and new monks!",
+            didyouknow_el:"🌟 Οι μοναχοί χρησιμοποιούσαν καλάθια και βαρούλκα!",
+            visit_ar:"مايو إلى أكتوبر", visit_en:"May to October", visit_el:"Μάιος έως Οκτώβριος" 
         }
     };
+
+    // التراث غير المادي
+    const omanIntangible = [
+        { ar:"☕ القهوة العمانية", en:"☕ Omani Coffee", el:"☕ Καφές Ομάν", desc_ar:"تقديم القهوة مع الهيل واللبان رمز للكرم والضيافة العمانية الأصيلة", desc_en:"Serving coffee with cardamom and frankincense, a symbol of Omani hospitality", desc_el:"Σερβίρισμα καφέ με κάρδαμο και λιβάνι" },
+        { ar:"🕺 العرضة العمانية", en:"🕺 Omani Al-Arda", el:"🕺 Al-Arda", desc_ar:"رقصة حربية بالسيوف والطبول تعبر عن الشجاعة والفخر الوطني", desc_en:"War dance with swords and drums expressing courage and national pride", desc_el:"Πολεμικός χορός με σπαθιά και τύμπανα" },
+        { ar:"🏺 صناعة الفخار", en:"🏺 Pottery", el:"🏺 Κεραμική", desc_ar:"صناعة يدوية متقنة تعود لآلاف السنين في ولاية بهلا", desc_en:"Masterful handicraft dating back thousands of years in Bahla", desc_el:"Αριστοτεχνική χειροτεχνία χιλιάδων ετών" }
+    ];
+    
+    const greeceIntangible = [
+        { ar:"🎭 الميديتيرانين (الغناء المتوسطي)", en:"🎭 Mediterranean Singing", el:"🎭 Μεσογειακό τραγούδι", desc_ar:"تقاليد غنائية بوليفونية تعبر عن التراث المتوسطي", desc_en:"Polyphonic singing traditions expressing Mediterranean heritage", desc_el:"Πολυφωνικές παραδόσεις τραγουδιού" },
+        { ar:"💃 الرقصات اليونانية", en:"💃 Greek Dances", el:"💃 Ελληνικοί χοροί", desc_ar:"السيرتاكي والرقصات الشعبية رمز الفرح والكرم اليوناني", desc_en:"Sirtaki and folk dances symbolizing Greek joy and hospitality", desc_el:"Συρτάκι και παραδοσιακοί χοροί" },
+        { ar:"🍇 كرم الضيافة (فيلوكسينيا)", en:"🍇 Filoxenia", el:"🍇 Φιλοξενία", desc_ar:"حب الغريب وتكريم الضيف قيمة أساسية في الثقافة اليونانية", desc_en:"Love of strangers and honoring guests is a core Greek value", desc_el:"Αγάπη για τους ξένους, βασική ελληνική αξία" }
+    ];
 
     let currentLang = 'ar';
     let lastCountry = 'oman';
@@ -268,16 +326,20 @@
             <div class="heritage-card" onclick="showInfo('${id}','oman')">
                 <div class="card-body">
                     <h3>${sitesData[id][`name_${currentLang}`]}</h3>
-                    <p>${sitesData[id][`info_${currentLang}`].substring(0,120)}...</p>
-                    <div class="fact-badge">🏛️ موقع يونسكو</div>
+                    <p>${sitesData[id][`info_${currentLang}`].substring(0,100)}...</p>
+                    <div class="fact-badge">${translations[currentLang].unesco_badge}</div>
                 </div>
             </div>
         `).join('');
         
         document.getElementById('oman-arts').innerHTML = `
-            <div class="art-card"><div class="art-placeholder">🎨</div><h3>${currentLang=='ar'?'الزخارف الهندسية':(currentLang=='en'?'Geometric Ornaments':'Γεωμετρικά Στολίδια')}</h3><p>${currentLang=='ar'?'نقوش هندسية وزهرية دقيقة على الخشب والجص، تعكس الهوية العمانية الأصيلة والحرفية العالية.':(currentLang=='en'?'Precise geometric and floral carvings on wood and plaster, reflecting authentic Omani identity.':'Πολύπλοκα γεωμετρικά και λουλουδάτα σκαλίσματα.')}</p></div>
-            <div class="art-card"><div class="art-placeholder">🗡️</div><h3>${currentLang=='ar'?'الخناجر الفضية':(currentLang=='en'?'Silver Khanjars':'Ασημένια Khanjar')}</h3><p>${currentLang=='ar'?'الخنجر العماني رمز الفخر والشجاعة، يصنع من الفضة عيار 925 بنقوش دقيقة.':(currentLang=='en'?'The Omani Khanjar is a symbol of pride and courage, made of 925 silver with precise engravings.':'Το Khanjar είναι σύμβολο υπερηφάνειας, από ασήμι 925.')}</p></div>
+            <div class="art-card"><div class="art-placeholder">🎨</div><h3>${currentLang=='ar'?'الزخارف الهندسية':(currentLang=='en'?'Geometric Ornaments':'Γεωμετρικά Στολίδια')}</h3><p>${currentLang=='ar'?'نقوش هندسية وزهرية دقيقة على الخشب والجص، تعكس الهوية العمانية الأصيلة.':(currentLang=='en'?'Precise geometric and floral carvings on wood and plaster, reflecting authentic Omani identity.':'Πολύπλοκα γεωμετρικά και λουλουδάτα σκαλίσματα.')}</p></div>
+            <div class="art-card"><div class="art-placeholder">🗡️</div><h3>${currentLang=='ar'?'الخناجر الفضية':(currentLang=='en'?'Silver Khanjars':'Ασημένια Khanjar')}</h3><p>${currentLang=='ar'?'الخنجر العماني رمز الفخر والشجاعة، يصنع من الفضة عيار 925.':(currentLang=='en'?'The Omani Khanjar is a symbol of pride and courage, made of 925 silver.':'Το Khanjar είναι σύμβολο υπερηφάνειας, από ασήμι 925.')}</p></div>
         `;
+        
+        document.getElementById('oman-intangible').innerHTML = omanIntangible.map(item => `
+            <div class="heritage-card"><div class="card-body"><h3>${item[currentLang] || item.ar}</h3><p>${item[`desc_${currentLang}`] || item.desc_ar}</p></div></div>
+        `).join('');
     }
 
     function renderGreece() {
@@ -286,24 +348,27 @@
             <div class="heritage-card" onclick="showInfo('${id}','greece')">
                 <div class="card-body">
                     <h3>${sitesData[id][`name_${currentLang}`]}</h3>
-                    <p>${sitesData[id][`info_${currentLang}`].substring(0,120)}...</p>
-                    <div class="fact-badge">🏛️ موقع يونسكو</div>
+                    <p>${sitesData[id][`info_${currentLang}`].substring(0,100)}...</p>
+                    <div class="fact-badge">${translations[currentLang].unesco_badge}</div>
                 </div>
             </div>
         `).join('');
 
         document.getElementById('greece-arts').innerHTML = `
-            <div class="art-card"><div class="art-placeholder">🔱</div><h3>${currentLang=='ar'?'المفتاح اليوناني':(currentLang=='en'?'Greek Key':'Ελληνικό Κλειδί')}</h3><p>${currentLang=='ar'?'زخرفة متعرجة (المياندروس) ترمز للخلود والحركة الدائمة، استخدمت على الفخار والمعابد منذ 3000 سنة.':(currentLang=='en'?'The meander pattern symbolizes eternity and constant motion, used on pottery and temples for 3000 years.':'Το μαιάνδρο σύμβολο της αιωνιότητας, 3000 χρόνια ιστορίας.')}</p></div>
-            <div class="art-card"><div class="art-placeholder">🏺</div><h3>${currentLang=='ar'?'الزخارف المينوية':(currentLang=='en'?'Minoan Art':'Μινωική Τέχνη')}</h3><p>${currentLang=='ar'?'نقوش مستوحاة من الطبيعة والأخطبوط والدلافين على الفخار، تعكس ارتباط الحضارة المينوية بالبحر.':(currentLang=='en'?'Marine-inspired motifs (octopus, dolphins) on pottery, reflecting the Minoan civilization\'s connection to the sea.':'Θαλάσσια θέματα σε κεραμική, η σύνδεση του Μινωικού πολιτισμού με τη θάλασσα.')}</p></div>
+            <div class="art-card"><div class="art-placeholder">🔱</div><h3>${currentLang=='ar'?'المفتاح اليوناني':(currentLang=='en'?'Greek Key':'Ελληνικό Κλειδί')}</h3><p>${currentLang=='ar'?'زخرفة متعرجة (المياندروس) ترمز للخلود، استخدمت منذ 3000 سنة.':(currentLang=='en'?'The meander pattern symbolizes eternity, used for 3000 years.':'Το μαιάνδρο σύμβολο της αιωνιότητας, 3000 χρόνια.')}</p></div>
+            <div class="art-card"><div class="art-placeholder">🏺</div><h3>${currentLang=='ar'?'الزخارف المينوية':(currentLang=='en'?'Minoan Art':'Μινωική Τέχνη')}</h3><p>${currentLang=='ar'?'نقوش مستوحاة من البحر والأخطبوط، تعكس ارتباط المينويين بالبحر.':(currentLang=='en'?'Marine-inspired motifs, reflecting the Minoan connection to the sea.':'Θαλάσσια θέματα, η σύνδεση του Μινωικού πολιτισμού με τη θάλασσα.')}</p></div>
         `;
+        
+        document.getElementById('greece-intangible').innerHTML = greeceIntangible.map(item => `
+            <div class="heritage-card"><div class="card-body"><h3>${item[currentLang] || item.ar}</h3><p>${item[`desc_${currentLang}`] || item.desc_ar}</p></div></div>
+        `).join('');
     }
 
     function renderSharedWords() {
         const words = [
-            { ar:"صندوق - σαντούκι (sandoúki)", en:"Sanduq - sandoúki", el:"σαντούκι - sandoúki", desc_ar:"📦 كلمة عربية انتقلت إلى اليونانية عبر التجارة البحرية", desc_en:"📦 Arabic word passed to Greek through maritime trade", desc_el:"📦 Αραβική λέξη που πέρασε στα ελληνικά" },
-            { ar:"قلب - καρδιά (kardia)", en:"Heart - kardia", el:"καρδιά - kardia", desc_ar:"❤️ جذر سامي قديم مشترك بين اللغتين", desc_en:"❤️ Ancient shared Semitic root", desc_el:"❤️ Αρχαία σημιτική ρίζα" },
-            { ar:"قيراط - καράτι (karati)", en:"Carat - karati", el:"καράτι - karati", desc_ar:"💎 وحدة قياس الذهب والأحجار الكريمة", desc_en:"💎 Unit for measuring gold and gemstones", desc_el:"💎 Μονάδα μέτρησης χρυσού" },
-            { ar:"قافلة - καραβάνι (karavani)", en:"Caravan - karavani", el:"καραβάνι - karavani", desc_ar:"🐫 قوافل التجارة عبر الصحراء والبحر", desc_en:"🐫 Trade caravans across desert and sea", desc_el:"🐫 Εμπορικά καραβάνια" }
+            { ar:"صندوق - σαντούκι (sandoúki)", en:"Sanduq - sandoúki", el:"σαντούκι - sandoúki", desc_ar:"📦 كلمة عربية انتقلت إلى اليونانية", desc_en:"📦 Arabic word passed to Greek", desc_el:"📦 Αραβική λέξη" },
+            { ar:"قلب - καρδιά (kardia)", en:"Heart - kardia", el:"καρδιά - kardia", desc_ar:"❤️ جذر سامي قديم مشترك", desc_en:"❤️ Ancient shared Semitic root", desc_el:"❤️ Αρχαία σημιτική ρίζα" },
+            { ar:"قيراط - καράτι (karati)", en:"Carat - karati", el:"καράτι - karati", desc_ar:"💎 وحدة قياس الذهب", desc_en:"💎 Gold measurement unit", desc_el:"💎 Μονάδα μέτρησης χρυσού" }
         ];
         document.getElementById('shared-words').innerHTML = words.map(w => `
             <div class="heritage-card"><div class="card-body"><h3>${w[currentLang] || w.ar}</h3><p>${w[`desc_${currentLang}`] || w.desc_ar}</p></div></div>
@@ -323,6 +388,8 @@
             <div class="fact-grid">
                 <div class="fact-card"><div class="fact-icon">📜</div><div class="fact-title">${translations[currentLang].history}</div><div>${s[`info_${currentLang}`]}</div></div>
                 <div class="fact-card"><div class="fact-icon">✨</div><div class="fact-title">${translations[currentLang].didyouknow}</div><div>${s[`didyouknow_${currentLang}`]}</div></div>
+                <div class="fact-card"><div class="fact-icon">📆</div><div class="fact-title">${translations[currentLang].unesco_date}</div><div>${s[`unesco_date_${currentLang}`]}</div></div>
+                <div class="fact-card"><div class="fact-icon">📋</div><div class="fact-title">${translations[currentLang].unesco_criteria}</div><div>${s[`unesco_criteria_${currentLang}`]}</div></div>
             </div>
             <div class="map-container">
                 <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=${parseFloat(s.lng)-0.02},${parseFloat(s.lat)-0.02},${parseFloat(s.lng)+0.02},${parseFloat(s.lat)+0.02}&layer=mapnik&marker=${s.lat},${s.lng}" allowfullscreen></iframe>
