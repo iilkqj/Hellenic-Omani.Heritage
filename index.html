@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Frankincense & Olive | اللبان والزيتون | Λιβάνι & Ελιά</title>
+    <title>مواقع اليونسكو | تراث عُمان واليونان</title>
     <style>
         * {
             margin: 0;
@@ -12,11 +12,11 @@
         }
         body {
             font-family: 'Segoe UI', 'Tahoma', 'Amiri', system-ui, sans-serif;
-            background: #fef8ed;
+            background: #fef5e7;
             color: #2c241a;
             scroll-behavior: smooth;
-            transition: all 0.2s;
         }
+        /* شريط التنقل */
         .navbar {
             background: #1e3a3f;
             color: white;
@@ -29,326 +29,571 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: bold;
             background: linear-gradient(135deg, #e6c87a, #c9a03d);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        .language-switch {
-            display: flex;
-            gap: 0.7rem;
-            flex-wrap: wrap;
-        }
-        .lang-btn {
-            background: #406e6b;
-            border: none;
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: bold;
-            color: white;
-            transition: 0.2s;
-        }
-        .lang-btn.active {
-            background: #d4af37;
-            color: #1e3a3f;
-        }
-        .lang-btn:hover {
-            background: #b48c3a;
-        }
         .nav-links {
             display: flex;
-            gap: 1.2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
         .nav-links a {
             color: #f0e2c5;
             text-decoration: none;
             font-weight: 500;
-            transition: 0.2s;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            transition: 0.3s;
         }
-        .nav-links a:hover {
-            color: #d4af37;
+        .nav-links a:hover, .nav-links a.active-page {
+            background: #d4af37;
+            color: #1e3a3f;
         }
-        .container {
-            max-width: 1300px;
-            margin: auto;
+        /* الأقسام الرئيسية */
+        .page {
+            display: none;
+            min-height: 80vh;
             padding: 2rem;
+            max-width: 1400px;
+            margin: auto;
         }
-        section {
-            background: rgba(255, 252, 240, 0.9);
-            border-radius: 36px;
-            padding: 1.8rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+        .page.active-page {
+            display: block;
         }
-        h2 {
-            font-size: 1.9rem;
+        /* الصفحة الرئيسية */
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #2c4c4b, #1e3a3f);
+            border-radius: 60px;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .country-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .country-card {
+            flex: 1;
+            min-width: 280px;
+            background: white;
+            border-radius: 48px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .country-card:hover {
+            transform: translateY(-10px);
+        }
+        .country-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .country-card h2 {
+            padding: 1.5rem;
+            font-size: 2rem;
+        }
+        .country-card.oman {
+            border-bottom: 8px solid #b7772e;
+        }
+        .country-card.greece {
+            border-bottom: 8px solid #2c6e9e;
+        }
+        /* باقي الأنماط */
+        .container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 0 1rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            color: #2c4c4b;
             border-right: 8px solid #d4af37;
             padding-right: 1rem;
-            margin-bottom: 1.2rem;
-            color: #2c4c4b;
+            margin: 2rem 0 1.5rem 0;
         }
-        .two-grid {
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .heritage-card {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .heritage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        .heritage-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .card-body h3 {
+            color: #b7772e;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+        .card-body p {
+            color: #5a4a3a;
+            margin: 0.5rem 0;
+        }
+        .badge {
+            display: inline-block;
+            background: #e9dbc9;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin-top: 0.8rem;
+        }
+        /* المودال */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+            overflow: auto;
+        }
+        .modal-content {
+            background-color: #fef8ed;
+            margin: 2% auto;
+            padding: 1.5rem;
+            border-radius: 48px;
+            width: 90%;
+            max-width: 1100px;
+            max-height: 90vh;
+            overflow-y: auto;
+            direction: rtl;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e2c7a1;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .close-modal {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #b7772e;
+        }
+        .modal-body {
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
-            margin: 1rem 0;
         }
-        .card {
+        .modal-gallery {
+            flex: 1.5;
+            min-width: 250px;
+        }
+        .modal-info {
             flex: 1;
-            min-width: 240px;
-            background: white;
-            border-radius: 28px;
-            padding: 1.2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            min-width: 250px;
         }
-        .real-img {
-            width: 100%;
-            height: 200px;
+        .modal-gallery img {
+            width: 100px;
+            height: 100px;
             object-fit: cover;
-            border-radius: 20px;
-            margin-bottom: 0.8rem;
-            background: #ddd;
+            margin: 0.3rem;
+            border-radius: 16px;
+            cursor: pointer;
+            border: 2px solid #d4af37;
         }
-        .badge {
-            background: #e9dbc9;
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            display: inline-block;
-            margin: 0.5rem 0;
-        }
-        .map-container, .video-container {
-            border-radius: 28px;
-            overflow: hidden;
-            margin: 1rem 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        iframe {
+        .main-modal-img {
             width: 100%;
-            border: none;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 24px;
+            margin-bottom: 1rem;
+        }
+        .map-container {
+            margin: 1rem 0;
+            border-radius: 24px;
+            overflow: hidden;
         }
         .map-container iframe {
-            height: 400px;
-        }
-        .video-container iframe {
-            height: 350px;
+            width: 100%;
+            height: 250px;
+            border: none;
         }
         footer {
             background: #1e3a3f;
             color: #ddd2bc;
             text-align: center;
-            padding: 1.8rem;
+            padding: 2rem;
+            margin-top: 3rem;
         }
-        .lang-content {
-            display: none;
+        .theme-oman {
+            background: linear-gradient(145deg, #fef0df, #fae6ce);
         }
-        .lang-content.active-lang {
-            display: block;
+        .theme-greece {
+            background: linear-gradient(145deg, #e8f0f5, #daeaf1);
         }
-        button, .lang-btn {
-            cursor: pointer;
-        }
-        @media (max-width: 700px) {
+        @media (max-width: 750px) {
             .navbar {
                 flex-direction: column;
+                text-align: center;
             }
-            .map-container iframe {
-                height: 300px;
+            .page {
+                padding: 1rem;
             }
-            .video-container iframe {
-                height: 220px;
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
             }
+        }
+        button {
+            background: #d4af37;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .lang-selector {
+            display: flex;
+            gap: 0.5rem;
+            background: #2c4c4b;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+        }
+        .lang-btn {
+            background: transparent;
+            color: white;
+            padding: 0.2rem 0.8rem;
+        }
+        .lang-btn.active {
+            background: #d4af37;
+            color: #1e3a3f;
         }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="logo">🌿 Frankincense & Olive | اللبان والزيتون | Λιβάνι & Ελιά</div>
-    <div class="language-switch">
-        <button class="lang-btn active" data-lang="ar">🇸🇦 العربية</button>
-        <button class="lang-btn" data-lang="en">🇬🇧 English</button>
-        <button class="lang-btn" data-lang="el">🇬🇷 Ελληνικά</button>
+    <div class="logo">🏛️ مواقع اليونسكو | UNESCO Sites | Μνημεία UNESCO</div>
+    <div class="nav-links">
+        <a href="#" data-page="home" class="active-page">🏠 الرئيسية</a>
+        <a href="#" data-page="oman">🇴🇲 عُمان</a>
+        <a href="#" data-page="greece">🇬🇷 اليونان</a>
     </div>
-    <div class="nav-links" id="navLinks"></div>
+    <div class="lang-selector">
+        <button class="lang-btn active" data-lang="ar">عربي</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="el">ΕΛ</button>
+    </div>
 </nav>
 
-<div class="container">
-    <!-- =================== اللغة العربية =================== -->
-    <div id="lang-ar" class="lang-content active-lang" dir="rtl">
-        <div style="text-align:center; margin-bottom:1rem;">
-            <h1>🇴🇲 🇬🇷 اللبان والزيتون: جذور تمتد بين عُمان واليونان</h1>
-            <p>موقع يوثق أوجه التراث المادي وغير المادي بين ضفتي البحر</p>
-        </div>
-
-        <!-- خريطة تفاعلية -->
-        <section>
-            <h2>🗺️ مواقع التراث على الخريطة</h2>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qZ3xYpLk7lKxVwQnJmO5sRfGhIjKlMnOpQrS" allowfullscreen></iframe>
-            </div>
-            <p style="margin-top:0.8rem;">📍 المواقع الظاهرة: قلعة بهلاء، مدينة قلهات (عُمان) - الأكروبوليس، دلفي، رودس (اليونان)</p>
-        </section>
-
-        <!-- فيديو يوتيوب عن العلاقات -->
-        <section>
-            <h2>📺 فيديو: عُمان واليونان - شراكة تاريخية</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=abc123" title="العلاقات العمانية اليونانية" allowfullscreen></iframe>
-            </div>
-            <p>🎬 فيلم قصير يوثق أوجه التشابه الثقافي والتبادل التجاري عبر التاريخ (مثال توضيحي - يمكنك استبدال الرابط)</p>
-        </section>
-
-        <section id="unesco-ar"><h2>🏛️ مواقع اليونسكو</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg?auto=compress&cs=tinysrgb&w=600" alt="بهلاء"><div class="badge">🇴🇲 عُمان</div><h3>قلعة بهلاء</h3><p>أول موقع عُماني في قائمة التراث العالمي (1987).</p></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg?auto=compress&cs=tinysrgb&w=600" alt="أكروبوليس"><div class="badge">🇬🇷 اليونان</div><h3>أكروبوليس أثينا</h3><p>رمز الحضارة الكلاسيكية والبارثينون.</p></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1284248/pexels-photo-1284248.jpeg?auto=compress&cs=tinysrgb&w=600" alt="قلهات"><div class="badge">🇴🇲 عُمان</div><h3>مدينة قلهات</h3><p>ميناء تاريخي على بحر العرب.</p></div></div></section>
-        
-        <section id="language-ar"><h2>📖 كلمات متشابهة</h2><div class="two-grid"><div class="card"><strong>صندوق</strong> - σαντούκι (sandoúki)<br><strong>قلب</strong> - καρδιά (kardiá)<br><strong>قيراط</strong> - καράτι (karáti)<br><strong>قافلة</strong> - καραβάνι<br><strong>زيت</strong> - λάδι (ladi)</div><div class="card"><strong>متحف</strong> (mouseion)<br><strong>مسرح</strong> (theatron)<br><strong>فكرة</strong> (idea)<br><strong>تاريخ</strong> (istoria)</div></div></section>
-        
-        <section id="arts-ar"><h2>🎨 دمج الزخارف</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg?auto=compress&cs=tinysrgb&w=600" style="max-height:250px; width:100%; object-fit:cover; border-radius:28px;"><p>✨ المفتاح اليوناني (الزخرفة المتعرجة) يلتقي بالوردة العمانية والنقوش الهندسية في الحلي والفخار المعاصر.</p></section>
-        
-        <section id="music-ar"><h2>🎵 الأغاني الشعبية</h2><div class="two-grid"><div class="card"><h3>🇴🇲 العرضة العمانية</h3><p>طبول، سيوف، شعر حماسي في المناسبات الوطنية.</p></div><div class="card"><h3>🇬🇷 السيرتاكي (Sirtaki)</h3><p>رقصة الزوربا الشهيرة، تعبر عن الفرح والكرم.</p></div></div><p>🎼 أوجه الشبه: استخدام الإيقاعات الجماعية، والغناء التراثي الذي يروي قصص البطولة.</p></section>
-        
-        <section id="intangible-ar"><h2>🤝 التراث غير المادي</h2><div class="two-grid"><div class="card"><h3>☕ عُمان</h3><p>القهوة العمانية بالهيل واللبان، المجلس العماني، العادات في الأعراس.</p></div><div class="card"><h3>🍇 اليونان</h3><p>فيلوكسينيا (φιλοξενία) حب الضيف، المهرجانات الشعبية، الغناء البوليفوني.</p></div></div></section>
-        
-        <section id="crafts-ar"><h2>🪡 الحرف التقليدية</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg?auto=compress&cs=tinysrgb&w=600" alt="حرف يدوية"><div class="two-grid"><div class="card"><h3>🇴🇲 عُمان</h3><p>الخنجر العماني (الفضة)، النسيج السدو، صناعة السفن التقليدية.</p></div><div class="card"><h3>🇬🇷 اليونان</h3><p>الفخار الملون، الحلي الفضية، النحت على الرخام.</p></div></div></section>
+<!-- الصفحة الرئيسية -->
+<div id="home-page" class="page active-page">
+    <div class="hero">
+        <h1>🇴🇲 🇬🇷 تراث الإنسانية المشترك</h1>
+        <p>مواقع اليونسكو في سلطنة عُمان واليونان | جسور ثقافية تمتد لآلاف السنين</p>
     </div>
-
-    <!-- =================== ENGLISH =================== -->
-    <div id="lang-en" class="lang-content" dir="ltr">
-        <div style="text-align:center; margin-bottom:1rem;">
-            <h1>🇴🇲 🇬🇷 Frankincense & Olive: Oman & Greece Heritage</h1>
-            <p>UNESCO sites, language similarities, crafts, music, and intangible legacy</p>
+    <div class="country-cards">
+        <div class="country-card oman" data-country="oman">
+            <img src="https://drive.google.com/uc?export=view&id=PLACEHOLDER_OMAN" alt="عُمان">
+            <h2>🇴🇲 سلطنة عُمان</h2>
+            <p>قلعة بهلاء | قلهات | الأفلاج | حصون نزوى وجبرين</p>
         </div>
-
-        <section>
-            <h2>🗺️ Heritage Sites Map</h2>
-            <div class="map-container"><iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qZ3xYpLk7lKxVwQnJmO5sRfGhIjKlMnOpQrS" allowfullscreen></iframe></div>
-        </section>
-
-        <section>
-            <h2>📺 Video: Oman & Greece - A Historic Bond</h2>
-            <div class="video-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=abc123" allowfullscreen></iframe></div>
-        </section>
-
-        <section id="unesco-en"><h2>🏛️ UNESCO World Heritage Sites</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg"><h3>Bahla Fort, Oman</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg"><h3>Acropolis of Athens</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1284248/pexels-photo-1284248.jpeg"><h3>Qalhat City, Oman</h3></div></div></section>
-        
-        <section id="language-en"><h2>📖 Shared Words</h2><p><strong>sandoúki</strong> (σαντούκι) from Arabic "sanduq" ❤️ <strong>kardia</strong> (καρδιά) similar to "qalb" (heart)<br> Also: karati (قيراط), caravan (قافلة), ladi (زيت)</p></section>
-        
-        <section id="arts-en"><h2>🎨 Decorative Arts Fusion</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg"><p>Greek key meander meets Omani floral and geometric patterns in jewelry and ceramics.</p></section>
-        
-        <section id="music-en"><h2>🎵 Folk Music</h2><p>🇴🇲 Omani Al-ʿArḍa (drums, swords, poetry) | 🇬🇷 Greek Sirtaki (Zorba's dance) — both express courage and hospitality.</p></section>
-        
-        <section id="intangible-en"><h2>🤝 Intangible Heritage</h2><p>Omani Qahwa (coffee with cardamom & frankincense) 🤝 Greek Philoxenia (love of strangers).</p></section>
-        
-        <section id="crafts-en"><h2>🪡 Traditional Crafts</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg"><p>Silver Khanjar (Oman) & Greek painted pottery / marble carving.</p></section>
+        <div class="country-card greece" data-country="greece">
+            <img src="https://drive.google.com/uc?export=view&id=PLACEHOLDER_GREECE" alt="اليونان">
+            <h2>🇬🇷 اليونان</h2>
+            <p>أكروبوليس أثينا | دلفي | أولمبيا | رودس | ميتيورا</p>
+        </div>
     </div>
+</div>
 
-    <!-- =================== GREEK / ΕΛΛΗΝΙΚΑ =================== -->
-    <div id="lang-el" class="lang-content" dir="ltr">
-        <div style="text-align:center; margin-bottom:1rem;">
-            <h1>🇴🇲 🇬🇷 Λιβάνι & Ελιά: Πολιτιστική κληρονομιά Ομάν & Ελλάδας</h1>
-            <p>Μνημεία UNESCO, κοινές λέξεις, μουσική, χειροτεχνίες</p>
+<!-- صفحة عُمان -->
+<div id="oman-page" class="page theme-oman">
+    <div class="container">
+        <h1 class="section-title">🇴🇲 مواقع التراث العماني (اليونسكو والإضافية)</h1>
+        <div class="cards-grid" id="oman-cards"></div>
+        
+        <h2 class="section-title">🎨 الزخارف العمانية التقليدية</h2>
+        <div class="cards-grid" id="oman-arts"></div>
+        
+        <h2 class="section-title">📖 الكلمات المتشابهة بين العربية واليونانية</h2>
+        <div class="cards-grid">
+            <div class="heritage-card"><div class="card-body"><h3>صندوق</h3><p>σαντούκι (sandoúki)</p><p>أصلها عربي انتقل إلى اليونانية</p></div></div>
+            <div class="heritage-card"><div class="card-body"><h3>قلب / καρδιά</h3><p>تشابه في النطق القديم</p></div></div>
+            <div class="heritage-card"><div class="card-body"><h3>قيراط / καράτι</h3><p>مصدرها كلمة "قيراط" العربية</p></div></div>
+            <div class="heritage-card"><div class="card-body"><h3>قافلة / καραβάνι</h3><p>مستخدمة في اللغتين</p></div></div>
         </div>
+    </div>
+</div>
 
-        <section>
-            <h2>🗺️ Χάρτης μνημείων</h2>
-            <div class="map-container"><iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qZ3xYpLk7lKxVwQnJmO5sRfGhIjKlMnOpQrS" allowfullscreen></iframe></div>
-        </section>
-
-        <section>
-            <h2>📺 Βίντεο: Ομάν & Ελλάδα - Ιστορικός δεσμός</h2>
-            <div class="video-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=abc123" allowfullscreen></iframe></div>
-        </section>
-
-        <section id="unesco-el"><h2>🏛️ Μνημεία UNESCO</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg"><h3>Φρούριο Μπάχλα - Ομάν</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg"><h3>Ακρόπολη Αθηνών</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1284248/pexels-photo-1284248.jpeg"><h3>Πόλη Καλχάτ - Ομάν</h3></div></div></section>
+<!-- صفحة اليونان -->
+<div id="greece-page" class="page theme-greece">
+    <div class="container">
+        <h1 class="section-title">🇬🇷 مواقع التراث اليوناني (اليونسكو)</h1>
+        <div class="cards-grid" id="greece-cards"></div>
         
-        <section id="language-el"><h2>📖 Κοινές λέξεις</h2><p>σαντούκι (από το αραβικό sanduq) ❤️ καρδιά (qalb)<br> καράτι (قيراط), καραβάνι (قافلة), λάδι (زيت)</p></section>
+        <h2 class="section-title">🎨 الزخارف اليونانية التقليدية</h2>
+        <div class="cards-grid" id="greece-arts"></div>
         
-        <section id="arts-el"><h2>🎨 Συγχώνευση διακοσμήσεων</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg"><p>Ελληνικό μαιάνδρο & Ομανικό ρόδο σε κοσμήματα και κεραμική.</p></section>
-        
-        <section id="music-el"><h2>🎵 Δημοτική μουσική</h2><p>🇴🇲 Al-Arda του Ομάν | 🇬🇷 Σιρτάκι — εκφράζουν γενναιότητα και φιλοξενία.</p></section>
-        
-        <section id="intangible-el"><h2>🤝 Άυλη κληρονομιά</h2><p>Καφές του Ομάν με λιβάνι & Ελληνική φιλοξενία (φιλοξενία).</p></section>
-        
-        <section id="crafts-el"><h2>🪡 Παραδοσιακές χειροτεχνίες</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg"><p>Ασημένιο Χαντζάρ (Ομάν) & ελληνική κεραμική/μαρμάρινη γλυπτική.</p></section>
+        <h2 class="section-title">📖 التأثيرات اللغوية المتبادلة</h2>
+        <div class="cards-grid">
+            <div class="heritage-card"><div class="card-body"><h3>متحف / Μουσείο</h3><p>أصلها يوناني "mouseion"</p></div></div>
+            <div class="heritage-card"><div class="card-body"><h3>مسرح / Θέατρο</h3><p>كلمة يونانية انتقلت للعربية</p></div></div>
+            <div class="heritage-card"><div class="card-body"><h3>فكرة / Ιδέα</h3><p>مصطلح فلسفي يوناني</p></div></div>
+            <div class="heritage-card"><div class="card-body"><h3>تاريخ / Ιστορία</h3><p>جذر مشترك</p></div></div>
+        </div>
     </div>
 </div>
 
 <footer>
-    <p id="footerText">🌍 Frankincense & Olive — جسور بين عُمان واليونان | Bridges between Oman & Greece | Γέφυρες μεταξύ Ομάν και Ελλάδας | 2026</p>
+    <p>🌍 مواقع التراث العالمي لليونسكو | جسور ثقافية بين عُمان واليونان © 2026</p>
 </footer>
 
+<!-- المودال -->
+<div id="siteModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">اسم الموقع</h2>
+            <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="modal-gallery">
+                <img id="mainModalImg" class="main-modal-img" src="" alt="main">
+                <div id="modalGalleryThumbs"></div>
+            </div>
+            <div class="modal-info">
+                <p id="modalInfo"><strong>المعلومات:</strong> سيتم التحميل...</p>
+                <div class="map-container" id="modalMap"></div>
+                <p id="modalVisit"><strong>أفضل وقت للزيارة:</strong> </p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    const langBtns = document.querySelectorAll('.lang-btn');
-    const contents = {
-        ar: document.getElementById('lang-ar'),
-        en: document.getElementById('lang-en'),
-        el: document.getElementById('lang-el')
+    // بيانات المواقع
+    const sitesData = {
+        // عمان
+        bahla: {
+            name_ar: "قلعة بهلاء",
+            name_en: "Bahla Fort",
+            name_el: "Φρούριο Μπάχλα",
+            lat: "22.9646",
+            lng: "57.2992",
+            info_ar: "قلعة بهلاء من أقدم القلاع الطينية في العالم، مدرجة على قائمة اليونسكو منذ 1987.",
+            info_en: "Bahla Fort, one of the oldest mud-brick forts, UNESCO 1987.",
+            info_el: "Ένα από τα παλαιότερα πήλινα φρούρια, UNESCO 1987.",
+            visit_ar: "أكتوبر - أبريل (الطقس معتدل)",
+            images: ["https://drive.google.com/uc?export=view&id=PLACEHOLDER1", "https://drive.google.com/uc?export=view&id=PLACEHOLDER2"]
+        },
+        nizwa: {
+            name_ar: "حصن نزوى",
+            name_en: "Nizwa Fort",
+            name_el: "Φρούριο Νίζουα",
+            lat: "22.9333",
+            lng: "57.5333",
+            info_ar: "حصن نزوى ببرجه الدائري الضخم، من أبرز المعالم العمانية.",
+            info_en: "Nizwa Fort with its massive circular tower.",
+            info_el: "Το Φρούριο Νίζουα με τον τεράστιο κυκλικό πύργο.",
+            visit_ar: "سبتمبر - مايو",
+            images: []
+        },
+        qalhat: {
+            name_ar: "مدينة قلهات الأثرية",
+            name_en: "Qalhat Ancient City",
+            name_el: "Αρχαία πόλη Καλχάτ",
+            lat: "22.6958",
+            lng: "59.3698",
+            info_ar: "مدينة قلهات العمانية مدرجة على قائمة اليونسكو 2018.",
+            info_en: "Qalhat, UNESCO site since 2018.",
+            info_el: "Καλχάτ, Μνημείο UNESCO από το 2018.",
+            visit_ar: "أكتوبر - مارس",
+            images: []
+        },
+        aflaj: {
+            name_ar: "أفلاج عُمان",
+            name_en: "Omani Aflaj",
+            name_el: "Αφλάζ Ομάν",
+            lat: "22.9333",
+            lng: "57.5333",
+            info_ar: "نظام الري القديم المدرج على اليونسكو منذ 2006.",
+            info_en: "Ancient irrigation system, UNESCO 2006.",
+            info_el: "Αρχαίο σύστημα άρδευσης, UNESCO 2006.",
+            visit_ar: "طوال السنة",
+            images: []
+        },
+        jabrin: {
+            name_ar: "حصن جبرين",
+            name_en: "Jabrin Fort",
+            name_el: "Φρούριο Τζαμπρίν",
+            lat: "22.8155",
+            lng: "57.9473",
+            info_ar: "حصن جبرين تحفة معمارية عمانية.",
+            info_en: "Jabrin Fort, architectural masterpiece.",
+            info_el: "Αρχιτεκτονικό αριστούργημα.",
+            visit_ar: "أكتوبر - أبريل",
+            images: []
+        },
+        // اليونان
+        acropolis: {
+            name_ar: "أكروبوليس أثينا",
+            name_en: "Acropolis of Athens",
+            name_el: "Ακρόπολη Αθηνών",
+            lat: "37.9715",
+            lng: "23.7257",
+            info_ar: "أكروبوليس أثينا، رمز الحضارة اليونانية، مدرج على اليونسكو 1987.",
+            info_en: "Acropolis, symbol of Greek civilization, UNESCO 1987.",
+            info_el: "Ακρόπολη, σύμβολο του ελληνικού πολιτισμού, UNESCO 1987.",
+            visit_ar: "مارس - مايو، سبتمبر - نوفمبر",
+            images: []
+        },
+        delphi: {
+            name_ar: "دلفي",
+            name_en: "Delphi",
+            name_el: "Δελφοί",
+            lat: "38.4824",
+            lng: "22.5013",
+            info_ar: "دلفي كانت تعتبر مركز العالم في الأساطير اليونانية.",
+            info_en: "Delphi, center of the world in Greek mythology.",
+            info_el: "Δελφοί, το κέντρο του κόσμου στην ελληνική μυθολογία.",
+            visit_ar: "أبريل - أكتوبر",
+            images: []
+        },
+        olympia: {
+            name_ar: "أولمبيا",
+            name_en: "Olympia",
+            name_el: "Ολυμπία",
+            lat: "37.6389",
+            lng: "21.6305",
+            info_ar: "أولمبيا، مهد الألعاب الأولمبية القديمة.",
+            info_en: "Olympia, birthplace of ancient Olympic Games.",
+            info_el: "Ολυμπία, η γενέτειρα των αρχαίων Ολυμπιακών Αγώνων.",
+            visit_ar: "مايو - سبتمبر",
+            images: []
+        },
+        rhodes: {
+            name_ar: "مدينة رودس الوسطى",
+            name_en: "Medieval City of Rhodes",
+            name_el: "Μεσαιωνική πόλη της Ρόδου",
+            lat: "36.4456",
+            lng: "28.2272",
+            info_ar: "مدينة رودس الوسطى، موقع يونسكو منذ 1988.",
+            info_en: "Medieval City of Rhodes, UNESCO 1988.",
+            info_el: "Μεσαιωνική πόλη της Ρόδου, UNESCO 1988.",
+            visit_ar: "أبريل - أكتوبر",
+            images: []
+        },
+        meteora: {
+            name_ar: "ميتيورا",
+            name_en: "Meteora",
+            name_el: "Μετέωρα",
+            lat: "39.7141",
+            lng: "21.6311",
+            info_ar: "ميتيورا، أديرة معلقة على قمم الصخور.",
+            info_en: "Meteora, monasteries on rock pillars.",
+            info_el: "Μετέωρα, μοναστήρια σε βραχώδεις πυλώνες.",
+            visit_ar: "مايو - أكتوبر",
+            images: []
+        }
     };
-    
-    const navLinksContainer = document.getElementById('navLinks');
-    const navData = {
-        ar: [
-            {name:"اليونسكو", hash:"unesco-ar"},{name:"اللغة", hash:"language-ar"},{name:"الزخارف", hash:"arts-ar"},
-            {name:"الموسيقى", hash:"music-ar"},{name:"التراث غير المادي", hash:"intangible-ar"},{name:"الحرف", hash:"crafts-ar"}
-        ],
-        en: [
-            {name:"UNESCO", hash:"unesco-en"},{name:"Language", hash:"language-en"},{name:"Arts", hash:"arts-en"},
-            {name:"Music", hash:"music-en"},{name:"Intangible", hash:"intangible-en"},{name:"Crafts", hash:"crafts-en"}
-        ],
-        el: [
-            {name:"UNESCO", hash:"unesco-el"},{name:"Λέξεις", hash:"language-el"},{name:"Διακόσμηση", hash:"arts-el"},
-            {name:"Μουσική", hash:"music-el"},{name:"Άυλη", hash:"intangible-el"},{name:"Χειροτεχνίες", hash:"crafts-el"}
-        ]
-    };
-    
-    function updateNav(lang) {
-        let links = navData[lang];
-        if(!links) links = navData.ar;
-        navLinksContainer.innerHTML = '';
-        links.forEach(link => {
-            const a = document.createElement('a');
-            a.href = `#${link.hash}`;
-            a.textContent = link.name;
-            a.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.getElementById(link.hash);
-                if(target) target.scrollIntoView({behavior:"smooth"});
-            });
-            navLinksContainer.appendChild(a);
-        });
+
+    // وظيفة عرض المودال
+    function showModal(siteId) {
+        const site = sitesData[siteId];
+        if(!site) return;
+        document.getElementById('modalTitle').innerHTML = site.name_ar;
+        document.getElementById('modalInfo').innerHTML = `<strong>ℹ️ المعلومات:</strong> ${site.info_ar}<br><br><strong>📍 الموقع الجغرافي:</strong> عرض: ${site.lat}, طول: ${site.lng}`;
+        document.getElementById('modalVisit').innerHTML = `<strong>📅 أفضل وقت للزيارة:</strong> ${site.visit_ar}`;
+        const mapHtml = `<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=${site.lng-0.05},${site.lat-0.05},${site.lng+0.05},${site.lat+0.05}&layer=mapnik&marker=${site.lat},${site.lng}" allowfullscreen></iframe>`;
+        document.getElementById('modalMap').innerHTML = mapHtml;
+        document.getElementById('siteModal').style.display = 'block';
     }
-    
-    function switchLanguage(lang) {
-        Object.keys(contents).forEach(l => {
-            contents[l].classList.remove('active-lang');
-        });
-        contents[lang].classList.add('active-lang');
-        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-        updateNav(lang);
-        langBtns.forEach(btn => {
-            if(btn.getAttribute('data-lang') === lang) btn.classList.add('active');
-            else btn.classList.remove('active');
-        });
-        if(lang === 'ar') document.title = "اللبان والزيتون | تراث عُمان واليونان";
-        else if(lang === 'en') document.title = "Frankincense & Olive | Oman Greece Heritage";
-        else document.title = "Λιβάνι & Ελιά | Ομάν & Ελλάδα";
+
+    // إضافة البطاقات
+    function renderOman() {
+        const omanIds = ['bahla', 'nizwa', 'qalhat', 'aflaj', 'jabrin'];
+        const container = document.getElementById('oman-cards');
+        container.innerHTML = omanIds.map(id => `
+            <div class="heritage-card" onclick="showModal('${id}')">
+                <div class="card-body"><h3>${sitesData[id].name_ar}</h3><p>${sitesData[id].info_ar.substring(0, 80)}...</p><div class="badge">اليونسكو</div></div>
+            </div>
+        `).join('');
+        document.getElementById('oman-arts').innerHTML = `
+            <div class="heritage-card"><div class="card-body"><h3>زخارف هندسية</h3><p>نقوش على الخشب والجص</p><img src="https://drive.google.com/uc?export=view&id=PLACEHOLDER_ART1" style="width:100%; border-radius:24px;"></div></div>
+            <div class="heritage-card"><div class="card-body"><h3>الحلي الفضية</h3><p>خناجر ومجوهرات عمانية</p><img src="https://drive.google.com/uc?export=view&id=PLACEHOLDER_ART2" style="width:100%; border-radius:24px;"></div></div>
+        `;
     }
-    
-    langBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.getAttribute('data-lang');
-            switchLanguage(lang);
+    function renderGreece() {
+        const grIds = ['acropolis', 'delphi', 'olympia', 'rhodes', 'meteora'];
+        const container = document.getElementById('greece-cards');
+        container.innerHTML = grIds.map(id => `
+            <div class="heritage-card" onclick="showModal('${id}')">
+                <div class="card-body"><h3>${sitesData[id].name_ar}</h3><p>${sitesData[id].info_ar.substring(0, 80)}...</p><div class="badge">اليونسكو</div></div>
+            </div>
+        `).join('');
+        document.getElementById('greece-arts').innerHTML = `
+            <div class="heritage-card"><div class="card-body"><h3>المفتاح اليوناني</h3><p>زخرفة متعرجة</p><img src="https://drive.google.com/uc?export=view&id=PLACEHOLDER_GART1" style="width:100%; border-radius:24px;"></div></div>
+            <div class="heritage-card"><div class="card-body"><h3>الزخارف المينوية</h3><p>نقوش على الفخار</p><img src="https://drive.google.com/uc?export=view&id=PLACEHOLDER_GART2" style="width:100%; border-radius:24px;"></div></div>
+        `;
+    }
+
+    // التنقل بين الصفحات
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+        document.getElementById(`${pageId}-page`).classList.add('active-page');
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active-page'));
+        document.querySelector(`.nav-links a[data-page="${pageId}"]`).classList.add('active-page');
+        if(pageId === 'oman') renderOman();
+        if(pageId === 'greece') renderGreece();
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = link.getAttribute('data-page');
+            showPage(page);
         });
     });
-    
-    switchLanguage('ar');
+    document.querySelectorAll('.country-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const country = card.getAttribute('data-country');
+            showPage(country);
+        });
+    });
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        document.getElementById('siteModal').style.display = 'none';
+    });
+    window.onclick = function(e) { if(e.target === document.getElementById('siteModal')) document.getElementById('siteModal').style.display = 'none'; }
+
+    renderOman(); renderGreece();
+    window.showModal = showModal;
 </script>
 </body>
 </html>
