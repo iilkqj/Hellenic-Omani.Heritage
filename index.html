@@ -17,7 +17,6 @@
             scroll-behavior: smooth;
             transition: all 0.2s;
         }
-        /* شريط التنقل متعدد اللغات */
         .navbar {
             background: #1e3a3f;
             color: white;
@@ -43,6 +42,7 @@
         .language-switch {
             display: flex;
             gap: 0.7rem;
+            flex-wrap: wrap;
         }
         .lang-btn {
             background: #406e6b;
@@ -70,6 +70,10 @@
             color: #f0e2c5;
             text-decoration: none;
             font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: #d4af37;
         }
         .container {
             max-width: 1300px;
@@ -120,6 +124,22 @@
             display: inline-block;
             margin: 0.5rem 0;
         }
+        .map-container, .video-container {
+            border-radius: 28px;
+            overflow: hidden;
+            margin: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        iframe {
+            width: 100%;
+            border: none;
+        }
+        .map-container iframe {
+            height: 400px;
+        }
+        .video-container iframe {
+            height: 350px;
+        }
         footer {
             background: #1e3a3f;
             color: #ddd2bc;
@@ -139,6 +159,12 @@
             .navbar {
                 flex-direction: column;
             }
+            .map-container iframe {
+                height: 300px;
+            }
+            .video-container iframe {
+                height: 220px;
+            }
         }
     </style>
 </head>
@@ -155,54 +181,110 @@
 </nav>
 
 <div class="container">
-    <!-- المحتوى لكل لغة -->
-    <!-- اللغة العربية (default) -->
+    <!-- =================== اللغة العربية =================== -->
     <div id="lang-ar" class="lang-content active-lang" dir="rtl">
-        <!-- المحتوى العربي الكامل -->
-        <div style="text-align:center;"><h1>🇴🇲 🇬🇷 اللبان والزيتون: جذور تمتد بين عُمان واليونان</h1><p>موقع يوثق أوجه التراث المادي وغير المادي بين ضفتي البحر</p></div>
+        <div style="text-align:center; margin-bottom:1rem;">
+            <h1>🇴🇲 🇬🇷 اللبان والزيتون: جذور تمتد بين عُمان واليونان</h1>
+            <p>موقع يوثق أوجه التراث المادي وغير المادي بين ضفتي البحر</p>
+        </div>
 
-        <section id="unesco-ar"><h2>🏛️ مواقع اليونسكو</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg?auto=compress&cs=tinysrgb&w=600" alt="بهلاء"><div class="badge">🇴🇲 عُمان</div><h3>قلعة بهلاء</h3><p>أول موقع عُماني في قائمة التراث العالمي.</p></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg?auto=compress&cs=tinysrgb&w=600" alt="أكروبوليس"><div class="badge">🇬🇷 اليونان</div><h3>أكروبوليس أثينا</h3><p>رمز الحضارة الكلاسيكية.</p></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1284248/pexels-photo-1284248.jpeg?auto=compress&cs=tinysrgb&w=600" alt="قلهات"><div class="badge">🇴🇲 عُمان</div><h3>مدينة قلهات</h3><p>ميناء تاريخي على بحر العرب.</p></div></div></section>
+        <!-- خريطة تفاعلية -->
+        <section>
+            <h2>🗺️ مواقع التراث على الخريطة</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qZ3xYpLk7lKxVwQnJmO5sRfGhIjKlMnOpQrS" allowfullscreen></iframe>
+            </div>
+            <p style="margin-top:0.8rem;">📍 المواقع الظاهرة: قلعة بهلاء، مدينة قلهات (عُمان) - الأكروبوليس، دلفي، رودس (اليونان)</p>
+        </section>
+
+        <!-- فيديو يوتيوب عن العلاقات -->
+        <section>
+            <h2>📺 فيديو: عُمان واليونان - شراكة تاريخية</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=abc123" title="العلاقات العمانية اليونانية" allowfullscreen></iframe>
+            </div>
+            <p>🎬 فيلم قصير يوثق أوجه التشابه الثقافي والتبادل التجاري عبر التاريخ (مثال توضيحي - يمكنك استبدال الرابط)</p>
+        </section>
+
+        <section id="unesco-ar"><h2>🏛️ مواقع اليونسكو</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg?auto=compress&cs=tinysrgb&w=600" alt="بهلاء"><div class="badge">🇴🇲 عُمان</div><h3>قلعة بهلاء</h3><p>أول موقع عُماني في قائمة التراث العالمي (1987).</p></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg?auto=compress&cs=tinysrgb&w=600" alt="أكروبوليس"><div class="badge">🇬🇷 اليونان</div><h3>أكروبوليس أثينا</h3><p>رمز الحضارة الكلاسيكية والبارثينون.</p></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1284248/pexels-photo-1284248.jpeg?auto=compress&cs=tinysrgb&w=600" alt="قلهات"><div class="badge">🇴🇲 عُمان</div><h3>مدينة قلهات</h3><p>ميناء تاريخي على بحر العرب.</p></div></div></section>
         
-        <section id="language-ar"><h2>📖 كلمات متشابهة</h2><div class="two-grid"><div class="card">صندوق - σαντούκι (sandoúki)<br>قلب - καρδιά (kardiá)<br>قيراط - καράτι (karáti)</div><div class="card">القافلة - καραβάνι<br>زيت - λάδι (ladi)</div></div></section>
+        <section id="language-ar"><h2>📖 كلمات متشابهة</h2><div class="two-grid"><div class="card"><strong>صندوق</strong> - σαντούκι (sandoúki)<br><strong>قلب</strong> - καρδιά (kardiá)<br><strong>قيراط</strong> - καράτι (karáti)<br><strong>قافلة</strong> - καραβάνι<br><strong>زيت</strong> - λάδι (ladi)</div><div class="card"><strong>متحف</strong> (mouseion)<br><strong>مسرح</strong> (theatron)<br><strong>فكرة</strong> (idea)<br><strong>تاريخ</strong> (istoria)</div></div></section>
         
-        <section id="arts-ar"><h2>🎨 دمج الزخارف</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg?auto=compress&cs=tinysrgb&w=600" style="max-height:200px; width:100%; object-fit:cover; border-radius:28px;"><p>المفتاح اليوناني يلتقي بالوردة العمانية في الحلي والفخار.</p></section>
+        <section id="arts-ar"><h2>🎨 دمج الزخارف</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg?auto=compress&cs=tinysrgb&w=600" style="max-height:250px; width:100%; object-fit:cover; border-radius:28px;"><p>✨ المفتاح اليوناني (الزخرفة المتعرجة) يلتقي بالوردة العمانية والنقوش الهندسية في الحلي والفخار المعاصر.</p></section>
         
-        <section id="music-ar"><h2>🎵 الأغاني الشعبية</h2><div class="two-grid"><div class="card">🇴🇲 العرضة العمانية - الطبول والسيوف.</div><div class="card">🇬🇷 السيرتاكي - رقص الزوربا الشهير.</div></div><p>كلاهما يعبران عن الكرم والبطولة.</p></section>
+        <section id="music-ar"><h2>🎵 الأغاني الشعبية</h2><div class="two-grid"><div class="card"><h3>🇴🇲 العرضة العمانية</h3><p>طبول، سيوف، شعر حماسي في المناسبات الوطنية.</p></div><div class="card"><h3>🇬🇷 السيرتاكي (Sirtaki)</h3><p>رقصة الزوربا الشهيرة، تعبر عن الفرح والكرم.</p></div></div><p>🎼 أوجه الشبه: استخدام الإيقاعات الجماعية، والغناء التراثي الذي يروي قصص البطولة.</p></section>
         
-        <section id="intangible-ar"><h2>🤝 التراث غير المادي</h2><div class="two-grid"><div class="card">القهوة العمانية بالهيل واللبان.</div><div class="card">الضيف أولاً - φιλοξενία في اليونان.</div></div></section>
+        <section id="intangible-ar"><h2>🤝 التراث غير المادي</h2><div class="two-grid"><div class="card"><h3>☕ عُمان</h3><p>القهوة العمانية بالهيل واللبان، المجلس العماني، العادات في الأعراس.</p></div><div class="card"><h3>🍇 اليونان</h3><p>فيلوكسينيا (φιλοξενία) حب الضيف، المهرجانات الشعبية، الغناء البوليفوني.</p></div></div></section>
         
-        <section id="crafts-ar"><h2>🪡 الحرف التقليدية</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg?auto=compress&cs=tinysrgb&w=600"><p>الخنجر العماني - الفخار اليوناني - النسيج المشترك.</p></section>
+        <section id="crafts-ar"><h2>🪡 الحرف التقليدية</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg?auto=compress&cs=tinysrgb&w=600" alt="حرف يدوية"><div class="two-grid"><div class="card"><h3>🇴🇲 عُمان</h3><p>الخنجر العماني (الفضة)، النسيج السدو، صناعة السفن التقليدية.</p></div><div class="card"><h3>🇬🇷 اليونان</h3><p>الفخار الملون، الحلي الفضية، النحت على الرخام.</p></div></div></section>
     </div>
 
-    <!-- ENGLISH VERSION -->
+    <!-- =================== ENGLISH =================== -->
     <div id="lang-en" class="lang-content" dir="ltr">
-        <div style="text-align:center;"><h1>🇴🇲 🇬🇷 Frankincense & Olive: Oman & Greece Heritage</h1><p>UNESCO sites, language similarities, crafts, music, and intangible legacy</p></div>
-        <section><h2>🏛️ UNESCO Sites</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg?auto=compress&cs=tinysrgb&w=600"><h3>Bahla Fort, Oman</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg?auto=compress&cs=tinysrgb&w=600"><h3>Acropolis, Greece</h3></div></div></section>
-        <section><h2>📖 Shared Words</h2><p>sandoúki (σαντούκι) from Arabic "sanduq" ❤️ kardia (heart) close to "qalb"</p></section>
-        <section><h2>🎨 Decorative Arts Fusion</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg?auto=compress&cs=tinysrgb&w=600"><p>Greek key & Omani rose motifs blended in pottery</p></section>
-        <section><h2>🎵 Folk Music</h2><p>Omani Al-ʿArḍa 🥁 vs Greek Sirtaki 🎶 — both celebrate hospitality</p></section>
-        <section><h2>🤝 Intangible Heritage</h2><p>Omani coffee (Qahwa) & Greek Philoxenia (love of strangers).</p></section>
-        <section><h2>🪡 Traditional Crafts</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg?auto=compress&cs=tinysrgb&w=600"><p>Silver Khanjar & Greek ceramic art</p></section>
+        <div style="text-align:center; margin-bottom:1rem;">
+            <h1>🇴🇲 🇬🇷 Frankincense & Olive: Oman & Greece Heritage</h1>
+            <p>UNESCO sites, language similarities, crafts, music, and intangible legacy</p>
+        </div>
+
+        <section>
+            <h2>🗺️ Heritage Sites Map</h2>
+            <div class="map-container"><iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qZ3xYpLk7lKxVwQnJmO5sRfGhIjKlMnOpQrS" allowfullscreen></iframe></div>
+        </section>
+
+        <section>
+            <h2>📺 Video: Oman & Greece - A Historic Bond</h2>
+            <div class="video-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=abc123" allowfullscreen></iframe></div>
+        </section>
+
+        <section id="unesco-en"><h2>🏛️ UNESCO World Heritage Sites</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg"><h3>Bahla Fort, Oman</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg"><h3>Acropolis of Athens</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1284248/pexels-photo-1284248.jpeg"><h3>Qalhat City, Oman</h3></div></div></section>
+        
+        <section id="language-en"><h2>📖 Shared Words</h2><p><strong>sandoúki</strong> (σαντούκι) from Arabic "sanduq" ❤️ <strong>kardia</strong> (καρδιά) similar to "qalb" (heart)<br> Also: karati (قيراط), caravan (قافلة), ladi (زيت)</p></section>
+        
+        <section id="arts-en"><h2>🎨 Decorative Arts Fusion</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg"><p>Greek key meander meets Omani floral and geometric patterns in jewelry and ceramics.</p></section>
+        
+        <section id="music-en"><h2>🎵 Folk Music</h2><p>🇴🇲 Omani Al-ʿArḍa (drums, swords, poetry) | 🇬🇷 Greek Sirtaki (Zorba's dance) — both express courage and hospitality.</p></section>
+        
+        <section id="intangible-en"><h2>🤝 Intangible Heritage</h2><p>Omani Qahwa (coffee with cardamom & frankincense) 🤝 Greek Philoxenia (love of strangers).</p></section>
+        
+        <section id="crafts-en"><h2>🪡 Traditional Crafts</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg"><p>Silver Khanjar (Oman) & Greek painted pottery / marble carving.</p></section>
     </div>
 
-    <!-- GREEK VERSION (Ελληνικά) -->
+    <!-- =================== GREEK / ΕΛΛΗΝΙΚΑ =================== -->
     <div id="lang-el" class="lang-content" dir="ltr">
-        <div style="text-align:center;"><h1>🇴🇲 🇬🇷 Λιβάνι & Ελιά: Πολιτιστική κληρονομιά Ομάν & Ελλάδας</h1><p>Μνημεία UNESCO, κοινές λέξεις, μουσική, χειροτεχνίες</p></div>
-        <section><h2>🏛️ Μνημεία UNESCO</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg?auto=compress&cs=tinysrgb&w=600"><h3>Μπάχλα Φρούριο - Ομάν</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg?auto=compress&cs=tinysrgb&w=600"><h3>Ακρόπολη Αθηνών</h3></div></div></section>
-        <section><h2>📖 Κοινές λέξεις</h2><p>σαντούκι (από την αραβική sanduq) ❤️ καρδιά - καρδιά / qalb ομοιότητα</p></section>
-        <section><h2>🎨 Συγχώνευση διακοσμήσεων</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg?auto=compress&cs=tinysrgb&w=600"><p>Ελληνικό μαιάνδρο & Ομανικό ρόδο</p></section>
-        <section><h2>🎵 Δημοτικά τραγούδια</h2><p>Al-Arda του Ομάν & Σιρτάκι - Ελλάδα</p></section>
-        <section><h2>🤝 Άυλη κληρονομιά</h2><p>Καφές Ομάν & Φιλοξενία (Ελλάδα)</p></section>
-        <section><h2>🪡 Παραδοσιακές χειροτεχνίες</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg?auto=compress&cs=tinysrgb&w=600"><p>Ασημένιο Χαντζάρ & ελληνική κεραμική</p></section>
+        <div style="text-align:center; margin-bottom:1rem;">
+            <h1>🇴🇲 🇬🇷 Λιβάνι & Ελιά: Πολιτιστική κληρονομιά Ομάν & Ελλάδας</h1>
+            <p>Μνημεία UNESCO, κοινές λέξεις, μουσική, χειροτεχνίες</p>
+        </div>
+
+        <section>
+            <h2>🗺️ Χάρτης μνημείων</h2>
+            <div class="map-container"><iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qZ3xYpLk7lKxVwQnJmO5sRfGhIjKlMnOpQrS" allowfullscreen></iframe></div>
+        </section>
+
+        <section>
+            <h2>📺 Βίντεο: Ομάν & Ελλάδα - Ιστορικός δεσμός</h2>
+            <div class="video-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=abc123" allowfullscreen></iframe></div>
+        </section>
+
+        <section id="unesco-el"><h2>🏛️ Μνημεία UNESCO</h2><div class="two-grid"><div class="card"><img class="real-img" src="https://images.pexels.com/photos/2386226/pexels-photo-2386226.jpeg"><h3>Φρούριο Μπάχλα - Ομάν</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1105304/pexels-photo-1105304.jpeg"><h3>Ακρόπολη Αθηνών</h3></div><div class="card"><img class="real-img" src="https://images.pexels.com/photos/1284248/pexels-photo-1284248.jpeg"><h3>Πόλη Καλχάτ - Ομάν</h3></div></div></section>
+        
+        <section id="language-el"><h2>📖 Κοινές λέξεις</h2><p>σαντούκι (από το αραβικό sanduq) ❤️ καρδιά (qalb)<br> καράτι (قيراط), καραβάνι (قافلة), λάδι (زيت)</p></section>
+        
+        <section id="arts-el"><h2>🎨 Συγχώνευση διακοσμήσεων</h2><img class="real-img" src="https://images.pexels.com/photos/2589378/pexels-photo-2589378.jpeg"><p>Ελληνικό μαιάνδρο & Ομανικό ρόδο σε κοσμήματα και κεραμική.</p></section>
+        
+        <section id="music-el"><h2>🎵 Δημοτική μουσική</h2><p>🇴🇲 Al-Arda του Ομάν | 🇬🇷 Σιρτάκι — εκφράζουν γενναιότητα και φιλοξενία.</p></section>
+        
+        <section id="intangible-el"><h2>🤝 Άυλη κληρονομιά</h2><p>Καφές του Ομάν με λιβάνι & Ελληνική φιλοξενία (φιλοξενία).</p></section>
+        
+        <section id="crafts-el"><h2>🪡 Παραδοσιακές χειροτεχνίες</h2><img class="real-img" src="https://images.pexels.com/photos/2577362/pexels-photo-2577362.jpeg"><p>Ασημένιο Χαντζάρ (Ομάν) & ελληνική κεραμική/μαρμάρινη γλυπτική.</p></section>
     </div>
 </div>
 
 <footer>
-    <p id="footerText">🌍 Frankincense & Olive — جسور بين عُمان واليونان | 2026</p>
+    <p id="footerText">🌍 Frankincense & Olive — جسور بين عُمان واليونان | Bridges between Oman & Greece | Γέφυρες μεταξύ Ομάν και Ελλάδας | 2026</p>
 </footer>
 
 <script>
-    // إدارة تعدد اللغات
     const langBtns = document.querySelectorAll('.lang-btn');
     const contents = {
         ar: document.getElementById('lang-ar'),
@@ -210,7 +292,6 @@
         el: document.getElementById('lang-el')
     };
     
-    // روابط التنقل حسب اللغة
     const navLinksContainer = document.getElementById('navLinks');
     const navData = {
         ar: [
@@ -235,9 +316,6 @@
             const a = document.createElement('a');
             a.href = `#${link.hash}`;
             a.textContent = link.name;
-            a.style.color = "#f0e2c5";
-            a.style.textDecoration = "none";
-            a.style.margin = "0 5px";
             a.addEventListener('click', (e) => {
                 e.preventDefault();
                 const target = document.getElementById(link.hash);
@@ -258,7 +336,6 @@
             if(btn.getAttribute('data-lang') === lang) btn.classList.add('active');
             else btn.classList.remove('active');
         });
-        // تغيير عنوان الصفحة
         if(lang === 'ar') document.title = "اللبان والزيتون | تراث عُمان واليونان";
         else if(lang === 'en') document.title = "Frankincense & Olive | Oman Greece Heritage";
         else document.title = "Λιβάνι & Ελιά | Ομάν & Ελλάδα";
@@ -271,19 +348,7 @@
         });
     });
     
-    // بداية التشغيل بالعربية
     switchLanguage('ar');
-    
-    // إصلاح المعرفات section في الإنجليزية واليونانية (لضمان وجود عناصر)
-    if(!document.getElementById('unesco-en')) {
-        const secEn = document.querySelector('#lang-en section');
-        if(secEn) secEn.id = "unesco-en";
-    }
-    if(!document.getElementById('unesco-el')) {
-        const secEl = document.querySelector('#lang-el section');
-        if(secEl) secEl.id = "unesco-el";
-    }
-    // بسيط جداً لكن الموقع جاهز
 </script>
 </body>
 </html>
