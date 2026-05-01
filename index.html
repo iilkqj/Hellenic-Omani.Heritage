@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مواقع اليونسكو | عُمان واليونان</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', 'Amiri', Tahoma, sans-serif; background: #fef5e7; color: #2c241a; }
+        
+        /* شريط التنقل */
+        .navbar { background: #1e3a3f; color: white; padding: 1rem 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.3rem; font-weight: bold; background: linear-gradient(135deg, #e6c87a, #c9a03d); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .nav-links a { color: #f0e2c5; text-decoration: none; padding: 0.4rem 1rem; border-radius: 40px; cursor: pointer; }
+        .nav-links a:hover, .nav-links a.active { background: #d4af37; color: #1e3a3f; }
+        .lang-selector { display: flex; gap: 0.5rem; background: #2c4c4b; padding: 0.3rem 0.8rem; border-radius: 50px; }
+        .lang-btn { background: transparent; border: none; color: white; padding: 0.2rem 0.8rem; border-radius: 40px; cursor: pointer; }
+        .lang-btn.active { background: #d4af37; color: #1e3a3f; }
+        .back-home { background: #d4af37; color: #1e3a3f; border: none; padding: 0.4rem 1rem; border-radius: 40px; cursor: pointer; font-weight: bold; margin-right: 1rem; }
+        
+        /* الصفحات */
+        .page { display: none; min-height: 80vh; padding: 2rem; max-width: 1400px; margin: auto; }
+        .page.active { display: block; }
+        .hero { text-align: center; padding: 3rem; background: linear-gradient(135deg, #2c4c4b, #1e3a3f); border-radius: 60px; color: white; margin-bottom: 3rem; }
+        .country-cards { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+        .country-card { flex: 1; min-width: 280px; background: white; border-radius: 48px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; text-align: center; }
+        .country-card:hover { transform: translateY(-10px); }
+        .country-card img { width: 100%; height: 230px; object-fit: cover; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .heritage-card { background: white; border-radius: 32px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; }
+        .heritage-card:hover { transform: translateY(-5px); }
+        .card-body { padding: 1.5rem; }
+        .card-body h3 { color: #b7772e; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .card-img { width: 100%; height: 200px; object-fit: cover; }
+        .badge { display: inline-block; background: #e9dbc9; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.75rem; margin-top: 0.8rem; }
+        .section-title { font-size: 1.8rem; color: #2c4c4b; border-right: 8px solid #d4af37; padding-right: 1rem; margin: 2rem 0 1.5rem 0; }
+        .theme-oman { background: linear-gradient(145deg, #fef0df, #fae6ce); }
+        .theme-greece { background: linear-gradient(145deg, #e8f0f5, #daeaf1); }
+        .info-page { background: white; border-radius: 48px; padding: 2rem; margin-top: 2rem; }
+        .info-page img { max-width: 100%; border-radius: 32px; margin: 1rem 0; }
+        .map-btn { display: inline-block; background: #1e3a3f; color: white; padding: 0.6rem 1.5rem; border-radius: 50px; text-decoration: none; margin: 1rem 0; }
+        footer { background: #1e3a3f; color: #ddd2bc; text-align: center; padding: 1.5rem; margin-top: 2rem; }
+        .arts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin: 1rem 0; }
+        .art-card { background: white; border-radius: 28px; padding: 1.2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .art-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 20px; }
+        @media (max-width: 700px) { .navbar { flex-direction: column; text-align: center; } .page { padding: 1rem; } }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">🏛️ مواقع اليونسكو | عُمان واليونان</div>
+    <div class="nav-links">
+        <a data-page="home" class="active">🏠 الرئيسية</a>
+        <a data-page="oman">🇴🇲 عُمان</a>
+        <a data-page="greece">🇬🇷 اليونان</a>
+    </div>
+    <div class="lang-selector">
+        <button class="lang-btn active" data-lang="ar">عربي</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="el">ΕΛ</button>
+    </div>
+</nav>
+
+<!-- ========== الصفحة الرئيسية ========== -->
+<div id="home-page" class="page active">
+    <div class="hero">
+        <h1>🇴🇲 🇬🇷 تراث الإنسانية المشترك</h1>
+        <p>مواقع اليونسكو في سلطنة عُمان واليونان | جسور ثقافية تمتد لآلاف السنين</p>
+    </div>
+    <div class="country-cards">
+        <div class="country-card" data-country="oman">
+            <img src="https://drive.google.com/uc?export=view&id=16a0NPhVaxsuKYK-YFAGweYa7-am3o2ql" alt="عُمان">
+            <h2>🇴🇲 سلطنة عُمان</h2>
+            <p>قلعة بهلاء | قلهات | الأفلاج | حصون نزوى وجبرين</p>
+        </div>
+        <div class="country-card" data-country="greece">
+            <img src="https://drive.google.com/uc?export=view&id=15Mex9iJYJM7J5KTI58z3dCfrNjWXXBr_" alt="اليونان">
+            <h2>🇬🇷 اليونان</h2>
+            <p>أكروبوليس أثينا | أولمبيا | رودس | ميتيورا</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== صفحة عُمان ========== -->
+<div id="oman-page" class="page theme-oman">
+    <div class="country-header">
+        <button class="back-home" onclick="showPage('home')">🏠 العودة للرئيسية</button>
+        <h1 class="section-title">🇴🇲 مواقع التراث العماني (اليونسكو)</h1>
+    </div>
+    <div class="cards-grid" id="oman-cards"></div>
+    
+    <h2 class="section-title">🎨 الزخارف العمانية التقليدية</h2>
+    <div class="arts-grid" id="oman-arts"></div>
+    
+    <h2 class="section-title">📖 كلمات عربية ويونانية متشابهة</h2>
+    <div class="cards-grid" id="shared-words"></div>
+</div>
+
+<!-- ========== صفحة اليونان ========== -->
+<div id="greece-page" class="page theme-greece">
+    <div class="country-header">
+        <button class="back-home" onclick="showPage('home')">🏠 العودة للرئيسية</button>
+        <h1 class="section-title">🇬🇷 مواقع التراث اليوناني (اليونسكو)</h1>
+    </div>
+    <div class="cards-grid" id="greece-cards"></div>
+    
+    <h2 class="section-title">🎨 الزخارف اليونانية التقليدية</h2>
+    <div class="arts-grid" id="greece-arts"></div>
+</div>
+
+<!-- صفحة المعلومات (بدلاً من النوافذ المنبثقة) -->
+<div id="info-page" class="page">
+    <button class="back-home" onclick="goBackToCountry()">🏠 العودة للرئيسية</button>
+    <div class="info-page" id="info-content"></div>
+</div>
+
+<footer>
+    <p>🌍 مواقع التراث العالمي لليونسكو | جسور ثقافية بين عُمان واليونان © 2026</p>
+</footer>
+
+<script>
+    // ========== بيانات المواقع (بإحداثيات دقيقة من خرائط جوجل) ==========
+    const sitesData = {
+        bahla: { id:"bahla", name_ar:"قلعة بهلاء", name_en:"Bahla Fort", name_el:"Φρούριο Μπάχλα", lat:"22.964600", lng:"57.299200", 
+            info_ar:"<strong>قلعة بهلاء</strong> هي واحدة من أقدم القلاع الطينية في العالم، وتقع في ولاية بهلاء بمحافظة الداخلية. تم تسجيلها كموقع تراث عالمي لليونسكو عام 1987. تتميز القلعة بأسوارها الضخمة وأبراجها المتعددة، وكانت مركزاً للحكم والقوة في منطقة الجبل الأخضر.",
+            info_en:"<strong>Bahla Fort</strong> is one of the oldest mud-brick forts in the world, located in Bahla, Ad Dakhiliyah Governorate. It was inscribed as a UNESCO World Heritage Site in 1987.",
+            info_el:"<strong>Φρούριο Μπάχλα</strong> είναι ένα από τα παλαιότερα πήλινα φρούρια στον κόσμο, που βρίσκεται στην περιοχή Μπάχλα.",
+            visit_ar:"أفضل وقت للزيارة: أكتوبر إلى أبريل (الطقس معتدل)", visit_en:"Best visit: October to April", visit_el:"Καλύτερη επίσκεψη: Οκτώβριος έως Απρίλιος",
+            images:["https://drive.google.com/uc?export=view&id=1Li6THGhvx86_EMtEav_qPGLgRrzVYfZh","https://drive.google.com/uc?export=view&id=1VpFDad_qdAHzkak05spe5PGU8qx-X7Ka"] },
+        nizwa: { id:"nizwa", name_ar:"حصن نزوى", name_en:"Nizwa Fort", name_el:"Φρούριο Νίζουα", lat:"22.933300", lng:"57.533300",
+            info_ar:"<strong>حصن نزوى</strong> بني في القرن السابع عشر الميلادي، ويتميز ببرجه الدائري الضخم الذي يعد أكبر برج في عُمان. كان الحصن مركزاً للدفاع والحكم في مدينة نزوى التي كانت عاصمة لعُمان في عصور سابقة.",
+            info_en:"<strong>Nizwa Fort</strong> was built in the 17th century and features a massive circular tower, the largest in Oman.",
+            info_el:"<strong>Φρούριο Νίζουα</strong> χτίστηκε τον 17ο αιώνα και διαθέτει έναν τεράστιο κυκλικό πύργο.",
+            visit_ar:"أفضل وقت: سبتمبر إلى مايو", visit_en:"Best visit: September to May", visit_el:"Σεπτέμβριος έως Μάιος",
+            images:["https://drive.google.com/uc?export=view&id=16a0NPhVaxsuKYK-YFAGweYa7-am3o2ql","https://drive.google.com/uc?export=view&id=1ZEWUmiLuBQZBGsQ_SA8LpOult0ZXAKJ7"] },
+        qalhat: { id:"qalhat", name_ar:"مدينة قلهات", name_en:"Qalhat", name_el:"Καλχάτ", lat:"22.695800", lng:"59.369800",
+            info_ar:"<strong>مدينة قلهات</strong> مدينة أثرية قديمة تقع على ساحل بحر العرب. سُجلت في قائمة اليونسكو عام 2018. كانت المدينة ميناءً تجارياً مهماً بين القرنين 11 و15 الميلاديين.",
+            info_en:"<strong>Qalhat</strong> is an ancient city on the coast of the Arabian Sea, inscribed as a UNESCO site in 2018.",
+            info_el:"<strong>Καλχάτ</strong> είναι μια αρχαία πόλη στην ακτή της Αραβικής Θάλασσας, UNESCO 2018.",
+            visit_ar:"أفضل وقت: أكتوبر إلى مارس", visit_en:"October to March", visit_el:"Οκτώβριος έως Μάρτιος",
+            images:["https://drive.google.com/uc?export=view&id=1SvYiiO0ZraUa51PtNQxKEcV6Duv-heOd","https://drive.google.com/uc?export=view&id=15GuiMOlllqvnRdpaAo1sGfzcoF86hv79"] },
+        aflaj: { id:"aflaj", name_ar:"أفلاج عُمان", name_en:"Omani Aflaj", name_el:"Αφλάζ", lat:"22.900000", lng:"57.500000",
+            info_ar:"<strong>أفلاج عُمان</strong> نظام ري قديم وفريد من نوعه، تم تسجيله في اليونسكو عام 2006. يعتمد على قنوات مائية تحت الأرض تنقل المياه من منابعها إلى المزارع والمنازل.",
+            info_en:"<strong>Omani Aflaj</strong> is an ancient and unique irrigation system, UNESCO 2006.",
+            info_el:"<strong>Αφλάζ</strong> είναι ένα αρχαίο σύστημα άρδευσης, UNESCO 2006.",
+            visit_ar:"يمكن زيارتها طوال السنة", visit_en:"All year", visit_el:"Όλο το χρόνο",
+            images:["https://drive.google.com/uc?export=view&id=1_IYgrFiDWYL-upE49VD3fmcHRAExYRyz","https://drive.google.com/uc?export=view&id=187O_AEQNMjBd0mmJl1iNg2ZC7gW_HZWv","https://drive.google.com/uc?export=view&id=1UtJQy1G0BGBQC5wyaTUPGH97uV4PG6OI","https://drive.google.com/uc?export=view&id=1cj7yAxzN0hjV6n250TnW2NCM1pEB9jdb"] },
+        jabrin: { id:"jabrin", name_ar:"حصن جبرين", name_en:"Jabrin Fort", name_el:"Τζαμπρίν", lat:"22.815500", lng:"57.947300",
+            info_ar:"<strong>حصن جبرين</strong> تحفة معمارية عمانية، بني في أواخر القرن السابع عشر. يتميز بزخارفه الجميلة ونقوشه الإسلامية، وكان مدرسة للعلوم الدينية والدنيا.",
+            info_en:"<strong>Jabrin Fort</strong> is an architectural masterpiece, built in the late 17th century.",
+            info_el:"<strong>Τζαμπρίν</strong> είναι ένα αρχιτεκτονικό αριστούργημα, χτισμένο στα τέλη του 17ου αιώνα.",
+            visit_ar:"أفضل وقت: أكتوبر إلى أبريل", visit_en:"October to April", visit_el:"Οκτώβριος έως Απρίλιος",
+            images:["https://drive.google.com/uc?export=view&id=1Li6THGhvx86_EMtEav_qPGLgRrzVYfZh","https://drive.google.com/uc?export=view&id=1ZaEcPpbCtASKXhGbAtnd5LlgeOhDRklk"] },
+        acropolis: { id:"acropolis", name_ar:"أكروبوليس أثينا", name_en:"Acropolis of Athens", name_el:"Ακρόπολη Αθηνών", lat:"37.971500", lng:"23.725700",
+            info_ar:"<strong>أكروبوليس أثينا</strong> هو موقع أثري قديم يقع على تلة صخرية فوق مدينة أثينا. يضم معبد البارثينون الشهير، وسُجل في اليونسكو عام 1987. يرمز إلى ازدهار الحضارة اليونانية القديمة.",
+            info_en:"<strong>Acropolis of Athens</strong> is an ancient citadel with the famous Parthenon, UNESCO 1987.",
+            info_el:"<strong>Ακρόπολη Αθηνών</strong> είναι αρχαία ακρόπολη με τον Παρθενώνα, UNESCO 1987.",
+            visit_ar:"أفضل وقت: مارس-مايو، سبتمبر-نوفمبر", visit_en:"March-May, September-November", visit_el:"Μάρτιος-Μάιος, Σεπτέμβριος-Νοέμβριος",
+            images:["https://drive.google.com/uc?export=view&id=15Mex9iJYJM7J5KTI58z3dCfrNjWXXBr_","https://drive.google.com/uc?export=view&id=1co56A-_atgrgUXiGoAkxadjpKJgmc7Mg","https://drive.google.com/uc?export=view&id=1sYidHjQ0XdtjED7PQekxfJo57GdDg_Eg"] },
+        olympia: { id:"olympia", name_ar:"أولمبيا", name_en:"Olympia", name_el:"Ολυμπία", lat:"37.638900", lng:"21.630500",
+            info_ar:"<strong>أولمبيا</strong> هي موقع الألعاب الأولمبية القديمة، وتضم معبد زيوس وهرا. سُجلت في اليونسكو عام 1989. كانت مركزاً دينياً ورياضياً هاماً في اليونان القديمة.",
+            info_en:"<strong>Olympia</strong> is the site of the ancient Olympic Games, UNESCO 1989.",
+            info_el:"<strong>Ολυμπία</strong> είναι η τοποθεσία των αρχαίων Ολυμπιακών Αγώνων, UNESCO 1989.",
+            visit_ar:"أفضل وقت: مايو إلى سبتمبر", visit_en:"May to September", visit_el:"Μάιος έως Σεπτέμβριος",
+            images:["https://drive.google.com/uc?export=view&id=1JqihzZXMfVfP1wQ2j1s5Map9uoPoTSQf","https://drive.google.com/uc?export=view&id=1UyWzkQ3zHskofE8s0ypB-GDvPUexORVB","https://drive.google.com/uc?export=view&id=1bslDL0WuPcfxIVkDPdo5dhXBcTeLTFUF","https://drive.google.com/uc?export=view&id=1f9Mboo2uxcX4-ECqAHS07UMPbCQI9LiR"] },
+        rhodes: { id:"rhodes", name_ar:"مدينة رودس الوسطى", name_en:"Medieval City of Rhodes", name_el:"Μεσαιωνική πόλη της Ρόδου", lat:"36.445600", lng:"28.227200",
+            info_ar:"<strong>مدينة رودس الوسطى</strong> هي مدينة محصنة بناها فرسان الإسبتارية، سُجلت في اليونسكو عام 1988. تتميز بأسوارها الضخمة وشوارعها المرصوفة بالحصى.",
+            info_en:"<strong>Medieval City of Rhodes</strong> is a fortified city built by the Knights Hospitaller, UNESCO 1988.",
+            info_el:"<strong>Μεσαιωνική πόλη της Ρόδου</strong> είναι οχυρωμένη πόλη, UNESCO 1988.",
+            visit_ar:"أفضل وقت: أبريل إلى أكتوبر", visit_en:"April to October", visit_el:"Απρίλιος έως Οκτώβριος",
+            images:["https://drive.google.com/uc?export=view&id=13QR35ldvQNluVbpjzkGqJ-NTTSYkAz8_","https://drive.google.com/uc?export=view&id=1BjwgKCmOldSuRVNkNltE0uJdKgNC-729","https://drive.google.com/uc?export=view&id=1Q9PEY2zoYYHo4Uf8M7w7yMhAVrmVnh0O","https://drive.google.com/uc?export=view&id=1w7AE9gMGFySJgbE4yB2QGb5tPsn8RFjr"] },
+        meteora: { id:"meteora", name_ar:"ميتيورا", name_en:"Meteora", name_el:"Μετέωρα", lat:"39.714100", lng:"21.631100",
+            info_ar:"<strong>ميتيورا</strong> هي مجمع أديرة أرثوذكسية مبنية على قمم صخور شاهقة، سُجلت في اليونسكو عام 1988. تعد ثاني أكبر مجمع أديرة في اليونان.",
+            info_en:"<strong>Meteora</strong> is a complex of Orthodox monasteries on rock pillars, UNESCO 1988.",
+            info_el:"<strong>Μετέωρα</strong> είναι σύμπλεγμα Ορθοδόξων μοναστηριών σε βραχώδεις πυλώνες, UNESCO 1988.",
+            visit_ar:"أفضل وقت: مايو إلى أكتوبر", visit_en:"May to October", visit_el:"Μάιος έως Οκτώβριος",
+            images:["https://drive.google.com/uc?export=view&id=14T0klJdkCWS_xHwQtVHngeLBz2FHjrqT","https://drive.google.com/uc?export=view&id=1RsVHwmUnNl0veYggwhob1-lgqFVd_ESf","https://drive.google.com/uc?export=view&id=1SpDb8H2BoVHzk10vyuacQpXVRpCQLmRt","https://drive.google.com/uc?export=view&id=1iDfZ1w_qOtXuCmqjmhNodO6qGZL5b6rv"] }
+    };
+
+    // الكلمات المتشابهة
+    const sharedWords = [
+        { ar:"صندوق - σαντούκι (sandoúki)", en:"Sanduq - sandoúki", el:"σαντούκι - sandoúki", desc_ar:"كلمة عربية انتقلت إلى اليونانية", desc_en:"Arabic word passed to Greek", desc_el:"Αραβική λέξη που πέρασε στα ελληνικά" },
+        { ar:"قلب - καρδιά (kardia)", en:"Heart - kardia", el:"καρδιά - kardia", desc_ar:"تشابه في الجذور القديمة", desc_en:"Similar ancient roots", desc_el:"Παρόμοιες αρχαίες ρίζες" },
+        { ar:"قيراط - καράτι (karati)", en:"Carat - karati", el:"καράτι - karati", desc_ar:"وحدة قياس مشتركة", desc_en:"Common measurement unit", desc_el:"Κοινή μονάδα μέτρησης" },
+        { ar:"قافلة - καραβάνι (karavani)", en:"Caravan - karavani", el:"καραβάνι - karavani", desc_ar:"كلمة مشتركة للقوافل التجارية", desc_en:"Common word for trade caravans", desc_el:"Κοινή λέξη για τα εμπορικά καραβάνια" }
+    ];
+
+    let currentLang = 'ar';
+    let lastCountry = 'oman';
+
+    // عرض بطاقات عُمان
+    function renderOman() {
+        const sites = ['bahla','nizwa','qalhat','aflaj','jabrin'];
+        const container = document.getElementById('oman-cards');
+        container.innerHTML = sites.map(id => `
+            <div class="heritage-card" onclick="showInfo('${id}','oman')">
+                <div class="card-body"><h3>${sitesData[id][`name_${currentLang}`]}</h3><p>${sitesData[id][`info_${currentLang}`].substring(0,100)}...</p><div class="badge">اليونسكو</div></div>
+            </div>
+        `).join('');
+        
+        // الزخارف العمانية
+        document.getElementById('oman-arts').innerHTML = `
+            <div class="art-card"><img src="https://drive.google.com/uc?export=view&id=1y0uM-2HSgfu_ljKyGMPhazEu8r7s_Ae6"><h3>${currentLang=='ar'?'الزخارف الهندسية':(currentLang=='en'?'Geometric Ornaments':'Γεωμετρικά Στολίδια')}</h3><p>${currentLang=='ar'?'نقوش هندسية وزهرية على الخشب والجص، تعكس الهوية العمانية الأصيلة.':(currentLang=='en'?'Geometric and floral carvings on wood and plaster, reflecting authentic Omani identity.':'Γεωμετρικά και λουλουδάτα σκαλίσματα σε ξύλο και γύψο, που αντικατοπτρίζουν την αυθεντική ομανική ταυτότητα.')}</p></div>
+            <div class="art-card"><img src="https://drive.google.com/uc?export=view&id=1X_hqzXsbiS2-yFpWAgp9k9ZrM4Mewtzb"><h3>${currentLang=='ar'?'الحلي الفضية':(currentLang=='en'?'Silver Jewelry':'Ασημένια Κοσμήματα')}</h3><p>${currentLang=='ar'?'الخناجر العمانية والمجوهرات الفضية بنقوشها الدقيقة.':(currentLang=='en'?'Omani silver Khanjars and jewelry with intricate engravings.':'Ομανικά ασημένια Khanjar και κοσμήματα με περίπλοκα σκαλίσματα.')}</p></div>
+        `;
+    }
+
+    // عرض بطاقات اليونان
+    function renderGreece() {
+        const sites = ['acropolis','olympia','rhodes','meteora'];
+        const container = document.getElementById('greece-cards');
+        container.innerHTML = sites.map(id => `
+            <div class="heritage-card" onclick="showInfo('${id}','greece')">
+                <div class="card-body"><h3>${sitesData[id][`name_${currentLang}`]}</h3><p>${sitesData[id][`info_${currentLang}`].substring(0,100)}...</p><div class="badge">اليونسكو</div></div>
+            </div>
+        `).join('');
+
+        // الزخارف اليونانية
+        document.getElementById('greece-arts').innerHTML = `
+            <div class="art-card"><img src="https://drive.google.com/uc?export=view&id=18gNnqoIvVF91Fw35HORHsnEbtrwNqLlW"><h3>${currentLang=='ar'?'المفتاح اليوناني':(currentLang=='en'?'Greek Key':'Ελληνικό Κλειδί')}</h3><p>${currentLang=='ar'?'زخرفة متعرجة (المياندروس) ترمز للخلود والحركة الدائمة.':(currentLang=='en'?'Meander pattern symbolizing eternity and constant motion.':'Μαιάνδρο σχέδιο που συμβολίζει την αιωνιότητα και την αέναη κίνηση.')}</p></div>
+            <div class="art-card"><img src="https://drive.google.com/uc?export=view&id=1a4UTubdHVLsDHOaLETxJXNbdebZTb7xI"><h3>${currentLang=='ar'?'الزخارف المينوية':(currentLang=='en'?'Minoan Ornaments':'Μινωικά Στολίδια')}</h3><p>${currentLang=='ar'?'نقوش مستوحاة من الطبيعة والكائنات البحرية على الفخار.':(currentLang=='en'?'Nature and marine-inspired motifs on pottery.':'Μοτίβα εμπνευσμένα από τη φύση και τη θάλασσα στην κεραμική.')}</p></div>
+        `;
+    }
+
+    // عرض الكلمات المتشابهة
+    function renderSharedWords() {
+        const container = document.getElementById('shared-words');
+        container.innerHTML = sharedWords.map(w => `
+            <div class="heritage-card"><div class="card-body"><h3>${w[currentLang] || w.ar}</h3><p>${w[`desc_${currentLang}`] || w.desc_ar}</p></div></div>
+        `).join('');
+    }
+
+    // عرض صفحة المعلومات بدلاً من المودال
+    window.showInfo = function(siteId, country) {
+        lastCountry = country;
+        const s = sitesData[siteId];
+        if(!s) return;
+        
+        const mapUrl = `https://www.google.com/maps?q=${s.lat},${s.lng}`;
+        const galleryHtml = s.images.map(img => `<img src="${img}" style="width:150px; height:150px; object-fit:cover; margin:0.5rem; border-radius:20px;">`).join('');
+        
+        document.getElementById('info-content').innerHTML = `
+            <h2>${s[`name_${currentLang}`]}</h2>
+            ${galleryHtml}
+            <div style="margin:1rem 0">${s[`info_${currentLang}`]}</div>
+            <p><strong>📅 ${currentLang=='ar'?'أفضل وقت للزيارة':(currentLang=='en'?'Best visit time':'Καλύτερη ώρα επίσκεψης')}:</strong> ${s[`visit_${currentLang}`]}</p>
+            <a href="${mapUrl}" target="_blank" class="map-btn">🗺️ ${currentLang=='ar'?'افتح الموقع على خرائط جوجل':(currentLang=='en'?'Open on Google Maps':'Άνοιγμα στους Χάρτες Google')}</a>
+        `;
+        
+        showPage('info');
+    }
+
+    function goBackToCountry() {
+        showPage(lastCountry);
+    }
+
+    // التنقل بين الصفحات
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(`${pageId}-page`).classList.add('active');
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+        const navLink = document.querySelector(`.nav-links a[data-page="${pageId}"]`);
+        if(navLink) navLink.classList.add('active');
+    }
+
+    // تبديل اللغة
+    function switchLang(lang) {
+        currentLang = lang;
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+        renderOman();
+        renderGreece();
+        renderSharedWords();
+        if(document.getElementById('info-page').classList.contains('active')) {
+            // إعادة تحميل المعلومات إذا كنا في صفحة المعلومات
+            const currentTitle = document.querySelector('#info-content h2')?.innerText;
+            if(currentTitle) {
+                for(let id in sitesData) {
+                    if(sitesData[id][`name_${lang}`] === currentTitle || sitesData[id].name_ar === currentTitle) {
+                        showInfo(id, lastCountry);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    // الأحداث
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', (e) => { e.preventDefault(); showPage(link.getAttribute('data-page')); });
+    });
+    document.querySelectorAll('.country-card').forEach(card => {
+        card.addEventListener('click', () => { showPage(card.getAttribute('data-country')); });
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchLang(btn.getAttribute('data-lang')));
+    });
+
+    renderOman(); renderGreece(); renderSharedWords();
+    window.goBackToCountry = goBackToCountry;
+    window.showInfo = showInfo;
+    window.showPage = showPage;
+</script>
+</body>
+</html>
