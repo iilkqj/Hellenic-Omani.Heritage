@@ -5,274 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>مواقع اليونسكو | تراث عُمان واليونان</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', 'Tahoma', 'Amiri', system-ui, sans-serif;
-            background: #fef5e7;
-            color: #2c241a;
-            scroll-behavior: smooth;
-        }
-        /* شريط التنقل */
-        .navbar {
-            background: #1e3a3f;
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-        .logo {
-            font-size: 1.4rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #e6c87a, #c9a03d);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .nav-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            color: #f0e2c5;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.4rem 0.8rem;
-            border-radius: 40px;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .nav-links a:hover, .nav-links a.active-page {
-            background: #d4af37;
-            color: #1e3a3f;
-        }
-        /* اللغة */
-        .lang-selector {
-            display: flex;
-            gap: 0.5rem;
-            background: #2c4c4b;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-        }
-        .lang-btn {
-            background: transparent;
-            border: none;
-            color: white;
-            padding: 0.2rem 0.8rem;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .lang-btn.active {
-            background: #d4af37;
-            color: #1e3a3f;
-        }
-        /* الصفحات */
-        .page {
-            display: none;
-            min-height: 80vh;
-            padding: 2rem;
-            max-width: 1400px;
-            margin: auto;
-        }
-        .page.active-page {
-            display: block;
-        }
-        .container {
-            max-width: 1400px;
-            margin: auto;
-            padding: 0 1rem;
-        }
-        .hero {
-            text-align: center;
-            padding: 3rem 1rem;
-            background: linear-gradient(135deg, #2c4c4b, #1e3a3f);
-            border-radius: 60px;
-            color: white;
-            margin-bottom: 3rem;
-        }
-        .hero h1 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .country-cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-        .country-card {
-            flex: 1;
-            min-width: 260px;
-            background: white;
-            border-radius: 48px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: 0.3s;
-            text-align: center;
-        }
-        .country-card:hover {
-            transform: translateY(-10px);
-        }
-        .country-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-        .country-card h2 {
-            padding: 1.5rem;
-            font-size: 1.8rem;
-        }
-        .section-title {
-            font-size: 1.8rem;
-            color: #2c4c4b;
-            border-right: 8px solid #d4af37;
-            padding-right: 1rem;
-            margin: 2rem 0 1.5rem 0;
-        }
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .heritage-card {
-            background: white;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .heritage-card:hover {
-            transform: translateY(-5px);
-        }
-        .card-body {
-            padding: 1.5rem;
-        }
-        .card-body h3 {
-            color: #b7772e;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .badge {
-            display: inline-block;
-            background: #e9dbc9;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            margin-top: 0.8rem;
-        }
-        .theme-oman {
-            background: linear-gradient(145deg, #fef0df, #fae6ce);
-        }
-        .theme-greece {
-            background: linear-gradient(145deg, #e8f0f5, #daeaf1);
-        }
-        /* المودال */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.85);
-            backdrop-filter: blur(5px);
-            overflow: auto;
-        }
-        .modal-content {
-            background-color: #fef8ed;
-            margin: 2% auto;
-            padding: 1.5rem;
-            border-radius: 48px;
-            width: 90%;
-            max-width: 1100px;
-            max-height: 90vh;
-            overflow-y: auto;
-            direction: rtl;
-        }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #e2c7a1;
-            padding-bottom: 0.8rem;
-            margin-bottom: 1rem;
-        }
-        .close-modal {
-            font-size: 2rem;
-            cursor: pointer;
-            color: #b7772e;
-        }
-        .modal-body {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-        .modal-gallery {
-            flex: 1.5;
-            min-width: 250px;
-        }
-        .modal-info {
-            flex: 1;
-            min-width: 250px;
-        }
-        .main-modal-img {
-            width: 100%;
-            max-height: 280px;
-            object-fit: cover;
-            border-radius: 24px;
-            margin-bottom: 1rem;
-        }
-        .thumb-img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            margin: 0.2rem;
-            border-radius: 16px;
-            cursor: pointer;
-            border: 2px solid #d4af37;
-        }
-        .map-container {
-            margin: 1rem 0;
-            border-radius: 24px;
-            overflow: hidden;
-        }
-        .map-container iframe {
-            width: 100%;
-            height: 250px;
-            border: none;
-        }
-        footer {
-            background: #1e3a3f;
-            color: #ddd2bc;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-        @media (max-width: 700px) {
-            .navbar {
-                flex-direction: column;
-                text-align: center;
-            }
-            .modal-content {
-                width: 95%;
-                padding: 1rem;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', 'Tahoma', 'Amiri', system-ui, sans-serif; background: #fef5e7; color: #2c241a; scroll-behavior: smooth; }
+        .navbar { background: #1e3a3f; color: white; padding: 1rem 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.4rem; font-weight: bold; background: linear-gradient(135deg, #e6c87a, #c9a03d); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .nav-links a { color: #f0e2c5; text-decoration: none; padding: 0.4rem 0.8rem; border-radius: 40px; cursor: pointer; }
+        .nav-links a:hover, .nav-links a.active-page { background: #d4af37; color: #1e3a3f; }
+        .lang-selector { display: flex; gap: 0.5rem; background: #2c4c4b; padding: 0.3rem 0.8rem; border-radius: 50px; }
+        .lang-btn { background: transparent; border: none; color: white; padding: 0.2rem 0.8rem; border-radius: 40px; cursor: pointer; }
+        .lang-btn.active { background: #d4af37; color: #1e3a3f; }
+        .page { display: none; min-height: 80vh; padding: 2rem; max-width: 1400px; margin: auto; }
+        .page.active-page { display: block; }
+        .container { max-width: 1400px; margin: auto; padding: 0 1rem; }
+        .hero { text-align: center; padding: 3rem 1rem; background: linear-gradient(135deg, #2c4c4b, #1e3a3f); border-radius: 60px; color: white; margin-bottom: 3rem; }
+        .country-cards { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+        .country-card { flex: 1; min-width: 260px; background: white; border-radius: 48px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; text-align: center; }
+        .country-card:hover { transform: translateY(-10px); }
+        .country-card img { width: 100%; height: 220px; object-fit: cover; }
+        .section-title { font-size: 1.8rem; color: #2c4c4b; border-right: 8px solid #d4af37; padding-right: 1rem; margin: 2rem 0 1.5rem 0; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+        .heritage-card { background: white; border-radius: 32px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; }
+        .heritage-card:hover { transform: translateY(-5px); }
+        .card-body { padding: 1.5rem; }
+        .card-body h3 { color: #b7772e; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .badge { display: inline-block; background: #e9dbc9; padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; margin-top: 0.8rem; }
+        .theme-oman { background: linear-gradient(145deg, #fef0df, #fae6ce); }
+        .theme-greece { background: linear-gradient(145deg, #e8f0f5, #daeaf1); }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px); overflow: auto; }
+        .modal-content { background-color: #fef8ed; margin: 2% auto; padding: 1.5rem; border-radius: 48px; width: 90%; max-width: 1100px; max-height: 90vh; overflow-y: auto; direction: rtl; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2c7a1; padding-bottom: 0.8rem; margin-bottom: 1rem; }
+        .close-modal { font-size: 2rem; cursor: pointer; color: #b7772e; }
+        .modal-body { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+        .modal-gallery { flex: 1.5; min-width: 250px; }
+        .modal-info { flex: 1; min-width: 250px; }
+        .main-modal-img { width: 100%; max-height: 280px; object-fit: cover; border-radius: 24px; margin-bottom: 1rem; }
+        .thumb-img { width: 70px; height: 70px; object-fit: cover; margin: 0.2rem; border-radius: 16px; cursor: pointer; border: 2px solid #d4af37; }
+        .map-container { margin: 1rem 0; border-radius: 24px; overflow: hidden; }
+        .map-container iframe { width: 100%; height: 250px; border: none; }
+        footer { background: #1e3a3f; color: #ddd2bc; text-align: center; padding: 1.5rem; margin-top: 2rem; }
+        @media (max-width: 700px) { .navbar { flex-direction: column; text-align: center; } .modal-content { width: 95%; padding: 1rem; } }
     </style>
 </head>
 <body>
@@ -291,7 +63,7 @@
     </div>
 </nav>
 
-<!-- ================= الصفحة الرئيسية ================= -->
+<!-- الصفحة الرئيسية -->
 <div id="home-page" class="page active-page">
     <div class="hero">
         <h1 data-key="hero_title">🇴🇲 🇬🇷 تراث الإنسانية المشترك</h1>
@@ -306,12 +78,12 @@
         <div class="country-card" data-country="greece">
             <img src="https://drive.google.com/uc?export=view&id=15Mex9iJYJM7J5KTI58z3dCfrNjWXXBr_" alt="Greece">
             <h2>🇬🇷 اليونان</h2>
-            <p>أكروبوليس أثينا | دلفي | أولمبيا | رودس | ميتيورا</p>
+            <p>أكروبوليس أثينا | أولمبيا | رودس | ميتيورا</p>
         </div>
     </div>
 </div>
 
-<!-- ================= صفحة عُمان ================= -->
+<!-- صفحة عُمان -->
 <div id="oman-page" class="page theme-oman">
     <div class="container">
         <h1 class="section-title" data-key="oman_title">🇴🇲 مواقع التراث العماني</h1>
@@ -323,7 +95,7 @@
     </div>
 </div>
 
-<!-- ================= صفحة اليونان ================= -->
+<!-- صفحة اليونان -->
 <div id="greece-page" class="page theme-greece">
     <div class="container">
         <h1 class="section-title" data-key="greece_title">🇬🇷 مواقع التراث اليوناني</h1>
@@ -333,33 +105,21 @@
     </div>
 </div>
 
-<footer>
-    <p>🌍 مواقع التراث العالمي لليونسكو | جسور ثقافية بين عُمان واليونان © 2026</p>
-</footer>
+<footer><p>🌍 مواقع التراث العالمي لليونسكو | جسور ثقافية بين عُمان واليونان © 2026</p></footer>
 
-<!-- مودال التفاصيل -->
+<!-- نافذة التفاصيل -->
 <div id="siteModal" class="modal">
     <div class="modal-content">
-        <div class="modal-header">
-            <h2 id="modalTitle">اسم الموقع</h2>
-            <span class="close-modal">&times;</span>
-        </div>
+        <div class="modal-header"><h2 id="modalTitle">اسم الموقع</h2><span class="close-modal">&times;</span></div>
         <div class="modal-body">
-            <div class="modal-gallery">
-                <img id="mainModalImg" class="main-modal-img" src="" alt="main">
-                <div id="modalGalleryThumbs"></div>
-            </div>
-            <div class="modal-info">
-                <p id="modalInfo"></p>
-                <div class="map-container" id="modalMap"></div>
-                <p id="modalVisit"></p>
-            </div>
+            <div class="modal-gallery"><img id="mainModalImg" class="main-modal-img" src=""><div id="modalGalleryThumbs"></div></div>
+            <div class="modal-info"><p id="modalInfo"></p><div class="map-container" id="modalMap"></div><p id="modalVisit"></p></div>
         </div>
     </div>
 </div>
 
 <script>
-    // ---------- 1. بيانات المواقع (مع صورك) ----------
+    // بيانات المواقع الكاملة مع الصور والخرائط
     const sitesData = {
         bahla: { name_ar:"قلعة بهلاء", name_en:"Bahla Fort", name_el:"Φρούριο Μπάχλα", lat:22.9646, lng:57.2992, info_ar:"أقدم القلاع الطينية، يونسكو 1987.", info_en:"Ancient mud-brick fort, UNESCO 1987.", info_el:"Αρχαίο πήλινο φρούριο, UNESCO 1987.", visit_ar:"أفضل وقت: أكتوبر-أبريل", images:["https://drive.google.com/uc?export=view&id=1Li6THGhvx86_EMtEav_qPGLgRrzVYfZh","https://drive.google.com/uc?export=view&id=1VpFDad_qdAHzkak05spe5PGU8qx-X7Ka"] },
         nizwa: { name_ar:"حصن نزوى", name_en:"Nizwa Fort", name_el:"Φρούριο Νίζουα", lat:22.9333, lng:57.5333, info_ar:"برج دائري ضخم، معلم بارز.", info_en:"Massive circular tower.", info_el:"Τεράστιος κυκλικός πύργος.", visit_ar:"سبتمبر-مايو", images:["https://drive.google.com/uc?export=view&id=16a0NPhVaxsuKYK-YFAGweYa7-am3o2ql","https://drive.google.com/uc?export=view&id=1ZEWUmiLuBQZBGsQ_SA8LpOult0ZXAKJ7","https://drive.google.com/uc?export=view&id=1sLw7Icg9dPfL8WL-MGpwNJ-D0N9_rjfT"] },
@@ -372,7 +132,7 @@
         meteora: { name_ar:"ميتيورا", name_en:"Meteora", name_el:"Μετέωρα", lat:39.7141, lng:21.6311, info_ar:"أديرة على قمم الصخور.", info_en:"Monasteries on rock pillars.", info_el:"Μοναστήρια σε βράχους.", visit_ar:"مايو-أكتوبر", images:["https://drive.google.com/uc?export=view&id=14T0klJdkCWS_xHwQtVHngeLBz2FHjrqT","https://drive.google.com/uc?export=view&id=1RsVHwmUnNl0veYggwhob1-lgqFVd_ESf","https://drive.google.com/uc?export=view&id=1SpDb8H2BoVHzk10vyuacQpXVRpCQLmRt","https://drive.google.com/uc?export=view&id=1iDfZ1w_qOtXuCmqjmhNodO6qGZL5b6rv"] }
     };
 
-    // ---------- 2. ترجمة الواجهة ----------
+    // الترجمات
     const translations = {
         ar: { hero_title:"🇴🇲 🇬🇷 تراث الإنسانية المشترك", hero_sub:"مواقع اليونسكو في عُمان واليونان", oman_title:"🇴🇲 مواقع التراث العماني", greece_title:"🇬🇷 مواقع التراث اليوناني", oman_arts_title:"🎨 الزخارف العمانية", greece_arts_title:"🎨 الزخارف اليونانية", shared_words_title:"📖 كلمات عربية ويونانية متشابهة" },
         en: { hero_title:"🇴🇲 🇬🇷 Shared Human Heritage", hero_sub:"UNESCO Sites in Oman & Greece", oman_title:"🇴🇲 Omani Heritage Sites", greece_title:"🇬🇷 Greek Heritage Sites", oman_arts_title:"🎨 Omani Ornaments", greece_arts_title:"🎨 Greek Ornaments", shared_words_title:"📖 Shared Arabic-Greek Words" },
@@ -380,105 +140,43 @@
     };
     let currentLang = 'ar';
 
-    function updateUILanguage() {
-        document.querySelectorAll('[data-key]').forEach(el => {
-            const key = el.getAttribute('data-key');
-            if(translations[currentLang][key]) el.innerText = translations[currentLang][key];
-        });
-        renderOman(); renderGreece(); renderSharedWords();
-    }
-
-    // ---------- 3. عرض البطاقات ----------
+    function updateUILanguage() { document.querySelectorAll('[data-key]').forEach(el => { const key = el.getAttribute('data-key'); if(translations[currentLang][key]) el.innerText = translations[currentLang][key]; }); renderOman(); renderGreece(); renderSharedWords(); }
     function renderOman() {
         const omanIds = ['bahla','nizwa','qalhat','aflaj','jabrin'];
-        const container = document.getElementById('oman-cards');
-        container.innerHTML = omanIds.map(id => `
-            <div class="heritage-card" onclick="showModal('${id}')">
-                <div class="card-body"><h3>${sitesData[id][`name_${currentLang}`]}</h3><p>${sitesData[id][`info_${currentLang}`]}</p><div class="badge">اليونسكو</div></div>
-            </div>
-        `).join('');
-        document.getElementById('oman-arts').innerHTML = `
-            <div class="heritage-card"><div class="card-body"><h3>زخارف عمانية</h3><img src="https://drive.google.com/uc?export=view&id=1y0uM-2HSgfu_ljKyGMPhazEu8r7s_Ae6" style="width:100%; border-radius:20px; margin-top:10px;"></div></div>
-            <div class="heritage-card"><div class="card-body"><h3>نقوش وحلي</h3><img src="https://drive.google.com/uc?export=view&id=1X_hqzXsbiS2-yFpWAgp9k9ZrM4Mewtzb" style="width:100%; border-radius:20px; margin-top:10px;"></div></div>
-        `;
+        document.getElementById('oman-cards').innerHTML = omanIds.map(id => `<div class="heritage-card" onclick="showModal('${id}')"><div class="card-body"><h3>${sitesData[id][`name_${currentLang}`]}</h3><p>${sitesData[id][`info_${currentLang}`]}</p><div class="badge">اليونسكو</div></div></div>`).join('');
+        document.getElementById('oman-arts').innerHTML = `<div class="heritage-card"><div class="card-body"><h3>زخارف عمانية</h3><img src="https://drive.google.com/uc?export=view&id=1y0uM-2HSgfu_ljKyGMPhazEu8r7s_Ae6" style="width:100%; border-radius:20px; margin-top:10px;"></div></div><div class="heritage-card"><div class="card-body"><h3>نقوش وحلي</h3><img src="https://drive.google.com/uc?export=view&id=1X_hqzXsbiS2-yFpWAgp9k9ZrM4Mewtzb" style="width:100%; border-radius:20px; margin-top:10px;"></div></div>`;
     }
     function renderGreece() {
-        const grIds = ['acropolis','olympia','rhodes','meteora']; // Delphi غير موجودة صور
-        const container = document.getElementById('greece-cards');
-        container.innerHTML = grIds.map(id => `
-            <div class="heritage-card" onclick="showModal('${id}')">
-                <div class="card-body"><h3>${sitesData[id][`name_${currentLang}`]}</h3><p>${sitesData[id][`info_${currentLang}`]}</p><div class="badge">اليونسكو</div></div>
-            </div>
-        `).join('');
-        document.getElementById('greece-arts').innerHTML = `
-            <div class="heritage-card"><div class="card-body"><h3>زخارف يونانية</h3><img src="https://drive.google.com/uc?export=view&id=18gNnqoIvVF91Fw35HORHsnEbtrwNqLlW" style="width:100%; border-radius:20px; margin-top:10px;"></div></div>
-            <div class="heritage-card"><div class="card-body"><h3>نقوش متعرجة</h3><img src="https://drive.google.com/uc?export=view&id=1a4UTubdHVLsDHOaLETxJXNbdebZTb7xI" style="width:100%; border-radius:20px; margin-top:10px;"></div></div>
-        `;
+        const grIds = ['acropolis','olympia','rhodes','meteora'];
+        document.getElementById('greece-cards').innerHTML = grIds.map(id => `<div class="heritage-card" onclick="showModal('${id}')"><div class="card-body"><h3>${sitesData[id][`name_${currentLang}`]}</h3><p>${sitesData[id][`info_${currentLang}`]}</p><div class="badge">اليونسكو</div></div></div>`).join('');
+        document.getElementById('greece-arts').innerHTML = `<div class="heritage-card"><div class="card-body"><h3>زخارف يونانية</h3><img src="https://drive.google.com/uc?export=view&id=18gNnqoIvVF91Fw35HORHsnEbtrwNqLlW" style="width:100%; border-radius:20px; margin-top:10px;"></div></div><div class="heritage-card"><div class="card-body"><h3>نقوش متعرجة</h3><img src="https://drive.google.com/uc?export=view&id=1a4UTubdHVLsDHOaLETxJXNbdebZTb7xI" style="width:100%; border-radius:20px; margin-top:10px;"></div></div>`;
     }
     function renderSharedWords() {
         const words = [ {ar:"صندوق - σαντούκι", en:"Sanduq - sandoúki", el:"σαντούκι"}, {ar:"قلب - καρδιά", en:"Heart - kardia", el:"καρδιά"}, {ar:"قيراط - καράτι", en:"Carat - karati", el:"καράτι"}, {ar:"قافلة - καραβάνι", en:"Caravan - karavani", el:"καραβάνι"} ];
         document.getElementById('shared-words').innerHTML = words.map(w => `<div class="heritage-card"><div class="card-body"><h3>${w[currentLang] || w.ar}</h3></div></div>`).join('');
     }
-
-    // ---------- 4. المودال ----------
     window.showModal = function(siteId) {
-        const s = sitesData[siteId];
-        if(!s) return;
+        const s = sitesData[siteId]; if(!s) return;
         document.getElementById('modalTitle').innerHTML = s[`name_${currentLang}`];
         document.getElementById('modalInfo').innerHTML = `<strong>ℹ️ ${currentLang==='ar'?'المعلومات':(currentLang==='en'?'Info':'Πληροφορίες')}:</strong> ${s[`info_${currentLang}`]}<br><br><strong>📍 ${currentLang==='ar'?'الإحداثيات':(currentLang==='en'?'Coordinates':'Συντεταγμένες')}:</strong> ${s.lat}, ${s.lng}`;
         document.getElementById('modalVisit').innerHTML = `<strong>📅 ${currentLang==='ar'?'أفضل وقت للزيارة':(currentLang==='en'?'Best visit':'Καλύτερη επίσκεψη')}:</strong> ${s.visit_ar}`;
-        const mapUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${s.lng-0.05},${s.lat-0.05},${s.lng+0.05},${s.lat+0.05}&layer=mapnik&marker=${s.lat},${s.lng}`;
-        document.getElementById('modalMap').innerHTML = `<iframe src="${mapUrl}" allowfullscreen></iframe>`;
-        const galleryDiv = document.getElementById('modalGalleryThumbs');
-        galleryDiv.innerHTML = '';
-        if(s.images && s.images.length) {
-            s.images.forEach(img => {
-                const thumb = document.createElement('img');
-                thumb.src = img;
-                thumb.classList.add('thumb-img');
-                thumb.onclick = () => document.getElementById('mainModalImg').src = img;
-                galleryDiv.appendChild(thumb);
-            });
-            document.getElementById('mainModalImg').src = s.images[0];
-        }
+        document.getElementById('modalMap').innerHTML = `<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=${s.lng-0.05},${s.lat-0.05},${s.lng+0.05},${s.lat+0.05}&layer=mapnik&marker=${s.lat},${s.lng}" allowfullscreen></iframe>`;
+        const galleryDiv = document.getElementById('modalGalleryThumbs'); galleryDiv.innerHTML = '';
+        if(s.images && s.images.length) { s.images.forEach(img => { const thumb = document.createElement('img'); thumb.src = img; thumb.classList.add('thumb-img'); thumb.onclick = () => document.getElementById('mainModalImg').src = img; galleryDiv.appendChild(thumb); }); document.getElementById('mainModalImg').src = s.images[0]; }
         document.getElementById('siteModal').style.display = 'block';
     }
-
-    // ---------- 5. التنقل بين الصفحات واللغات ----------
     function showPage(pageId) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
         document.getElementById(`${pageId}-page`).classList.add('active-page');
         document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active-page'));
         document.querySelector(`.nav-links a[data-page="${pageId}"]`).classList.add('active-page');
-        if(pageId === 'oman') renderOman();
-        if(pageId === 'greece') renderGreece();
-        if(pageId === 'home') { renderOman(); renderGreece(); renderSharedWords(); }
+        if(pageId === 'oman') renderOman(); if(pageId === 'greece') renderGreece(); if(pageId === 'home') { renderOman(); renderGreece(); renderSharedWords(); }
     }
-
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const page = link.getAttribute('data-page');
-            showPage(page);
-        });
-    });
-    document.querySelectorAll('.country-card').forEach(card => {
-        card.addEventListener('click', () => showPage(card.getAttribute('data-country')));
-    });
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            currentLang = btn.getAttribute('data-lang');
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            updateUILanguage();
-            if(document.getElementById('oman-page').classList.contains('active-page')) renderOman();
-            if(document.getElementById('greece-page').classList.contains('active-page')) renderGreece();
-            renderSharedWords();
-        });
-    });
+    document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); showPage(link.getAttribute('data-page')); }); });
+    document.querySelectorAll('.country-card').forEach(card => { card.addEventListener('click', () => showPage(card.getAttribute('data-country'))); });
+    document.querySelectorAll('.lang-btn').forEach(btn => { btn.addEventListener('click', () => { currentLang = btn.getAttribute('data-lang'); document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); updateUILanguage(); if(document.getElementById('oman-page').classList.contains('active-page')) renderOman(); if(document.getElementById('greece-page').classList.contains('active-page')) renderGreece(); renderSharedWords(); }); });
     document.querySelector('.close-modal').onclick = () => document.getElementById('siteModal').style.display = 'none';
     window.onclick = e => { if(e.target === document.getElementById('siteModal')) document.getElementById('siteModal').style.display = 'none'; };
-
     renderOman(); renderGreece(); renderSharedWords();
 </script>
 </body>
