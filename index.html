@@ -12,7 +12,7 @@
         .page.active { animation: fadeInUp 0.6s ease-out; }
         
         .navbar { background: #1e3a3f; color: white; padding: 1rem 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
-        .logo { font-size: 1.3rem; font-weight: bold; background: linear-gradient(135deg, #e6c87a, #c9a03d); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .logo { font-size: 1.3rem; font-weight: bold; background: linear-gradient(135deg, #e6c87a, #c9a03d); -webkit-background-clip: text; background-clip: text; color: transparent; cursor: pointer; }
         .nav-links { display: flex; gap: 1rem; flex-wrap: wrap; }
         .nav-links a { color: #f0e2c5; text-decoration: none; padding: 0.4rem 1rem; border-radius: 40px; cursor: pointer; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { background: #d4af37; color: #1e3a3f; transform: scale(1.05); }
@@ -45,7 +45,6 @@
         .theme-oman { background: linear-gradient(145deg, #fef0df, #fae6ce); }
         .theme-greece { background: linear-gradient(145deg, #e8f0f5, #daeaf1); }
         
-        /* صفحة المعلومات */
         .info-page { background: white; border-radius: 48px; padding: 2rem; margin-top: 1rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .info-page h2 { font-size: 2rem; color: #2c4c4b; margin-bottom: 1rem; text-align: center; }
         .map-container { margin: 1.5rem 0; border-radius: 24px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -53,7 +52,7 @@
         .map-btn { display: inline-block; background: linear-gradient(135deg, #1e3a3f, #2c4c4b); color: white; padding: 0.8rem 1.5rem; border-radius: 50px; text-decoration: none; margin: 1rem 0; transition: 0.3s; }
         .map-btn:hover { transform: scale(1.05); }
         .coordinates { background: linear-gradient(135deg, #d4af37, #c9a03d); padding: 0.8rem; border-radius: 20px; margin: 1rem 0; text-align: center; color: #1e3a3f; font-weight: bold; }
-        .detail-text { line-height: 1.8; margin: 1rem 0; }
+        .detail-text { line-height: 1.8; margin: 1rem 0; padding: 0.5rem; background: #f9f5ea; border-radius: 20px; }
         footer { background: #1e3a3f; color: #ddd2bc; text-align: center; padding: 1.5rem; margin-top: 2rem; }
         .arts-grid, .intangible-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin: 1rem 0; }
         .art-card, .intangible-card { background: white; border-radius: 24px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); text-align: center; }
@@ -64,7 +63,7 @@
 <body>
 
 <nav class="navbar">
-    <div class="logo" data-key="logo">🏛️ مواقع اليونسكو | UNESCO Sites | Μνημεία UNESCO</div>
+    <div class="logo" onclick="showPage('home')" data-key="logo">🏛️ مواقع اليونسكو | UNESCO Sites | Μνημεία UNESCO</div>
     <div class="nav-links">
         <a data-page="home" class="active" data-key="nav_home">🏠 الرئيسية</a>
         <a data-page="oman" data-key="nav_oman">🇴🇲 عُمان</a>
@@ -154,7 +153,7 @@
             back_home: "🏠 العودة للرئيسية",
             footer: "🌍 مواقع التراث العالمي لليونسكو | جسور ثقافية بين عُمان واليونان © 2026",
             unesco_badge: "🏛️ موقع يونسكو",
-            best_time: "📅 أفضل وقت للزيارة", open_map: "🗺️ افتح الموقع على خرائط جوجل",
+            best_time: "📅 أفضل وقت للزيارة", open_map: "🗺️ افتح الموقع على خرائط جوجل (خريطة تفاعلية)",
             location: "📍 الإحداثيات", info: "ℹ️ معلومات",
             history_title: "📜 التاريخ", fact_title: "✨ هل تعلم؟",
             unesco_date: "📆 تاريخ التسجيل", unesco_criteria: "📋 معايير اليونسكو"
@@ -176,7 +175,7 @@
             back_home: "🏠 Back to Home",
             footer: "🌍 UNESCO World Heritage Sites | Cultural Bridges between Oman & Greece © 2026",
             unesco_badge: "🏛️ UNESCO Site",
-            best_time: "📅 Best time to visit", open_map: "🗺️ Open on Google Maps",
+            best_time: "📅 Best time to visit", open_map: "🗺️ Open on Google Maps (Interactive Map)",
             location: "📍 Coordinates", info: "ℹ️ Info",
             history_title: "📜 History", fact_title: "✨ Did you know?",
             unesco_date: "📆 Inscription date", unesco_criteria: "📋 UNESCO criteria"
@@ -198,18 +197,18 @@
             back_home: "🏠 Επιστροφή στην Αρχική",
             footer: "🌍 Μνημεία Παγκόσμιας Κληρονομιάς UNESCO | Πολιτιστικές Γέφυρες © 2026",
             unesco_badge: "🏛️ Μνημείο UNESCO",
-            best_time: "📅 Καλύτερη επίσκεψη", open_map: "🗺️ Άνοιγμα στους Χάρτες Google",
+            best_time: "📅 Καλύτερη επίσκεψη", open_map: "🗺️ Άνοιγμα στους Χάρτες Google (Διαδραστικός Χάρτης)",
             location: "📍 Συντεταγμένες", info: "ℹ️ Πληροφορίες",
             history_title: "📜 Ιστορία", fact_title: "✨ Το γνωρίζατε;",
             unesco_date: "📆 Ημερομηνία εγγραφής", unesco_criteria: "📋 Κριτήρια UNESCO"
         }
     };
 
-    // بيانات المواقع بإحداثيات دقيقة من خرائط جوجل
+    // بيانات المواقع بإحداثيات دقيقة جداً
     const sitesData = {
         bahla: { 
             name_ar:"قلعة بهلاء", name_en:"Bahla Fort", name_el:"Φρούριο Μπάχλα", 
-            lat:"22.964600", lng:"57.299200", mapQuery:"22.9646,57.2992",
+            lat:"22.964600", lng:"57.299200",
             unesco_date_ar:"1987", unesco_date_en:"1987", unesco_date_el:"1987",
             unesco_criteria_ar:"معايير (iv) - تحفة فنية فريدة", 
             unesco_criteria_en:"Criteria (iv) - Unique artistic masterpiece",
@@ -226,7 +225,7 @@
         },
         nizwa: { 
             name_ar:"حصن نزوى", name_en:"Nizwa Fort", name_el:"Φρούριο Νίζουα", 
-            lat:"22.933300", lng:"57.533300", mapQuery:"22.9333,57.5333",
+            lat:"22.933300", lng:"57.533300",
             info_ar:"حصن نزوى بني عام 1650م، ويضم أكبر برج دائري في عُمان بقطر 45 متراً. البرج الدائري ليس له زوايا حادة مما جعله يصمد أمام الزلازل.",
             info_en:"Nizwa Fort was built in 1650 AD and features the largest circular tower in Oman, 45 meters in diameter with no sharp corners.",
             info_el:"Το Φρούριο Νίζουα χτίστηκε το 1650 μ.Χ. με τον μεγαλύτερο κυκλικό πύργο.",
@@ -237,8 +236,11 @@
         },
         acropolis: { 
             name_ar:"أكروبوليس أثينا", name_en:"Acropolis of Athens", name_el:"Ακρόπολη Αθηνών", 
-            lat:"37.971500", lng:"23.725700", mapQuery:"37.9715,23.7257",
+            lat:"37.971500", lng:"23.725700",
             unesco_date_ar:"1987", unesco_date_en:"1987", unesco_date_el:"1987",
+            unesco_criteria_ar:"معايير (i)(ii)(iii)(iv)(vi) - تحفة معمارية عالمية",
+            unesco_criteria_en:"Criteria (i)(ii)(iii)(iv)(vi) - Universal architectural masterpiece",
+            unesco_criteria_el:"Κριτήρια (i)(ii)(iii)(iv)(vi) - Παγκόσμιο αριστούργημα",
             info_ar:"أكروبوليس أثينا يقع على تلة ارتفاعها 156 متراً، ويضم البارثينون رمز الحضارة الغربية.",
             info_en:"The Acropolis of Athens sits on a 156-meter-high hill and houses the Parthenon, symbol of Western civilization.",
             info_el:"Η Ακρόπολη Αθηνών σε λόφο 156 μέτρων με τον Παρθενώνα.",
@@ -249,7 +251,11 @@
         },
         olympia: { 
             name_ar:"أولمبيا", name_en:"Olympia", name_el:"Ολυμπία", 
-            lat:"37.638900", lng:"21.630500", mapQuery:"37.6389,21.6305",
+            lat:"37.638900", lng:"21.630500",
+            unesco_date_ar:"1989", unesco_date_en:"1989", unesco_date_el:"1989",
+            unesco_criteria_ar:"معايير (i)(ii)(iii)(iv)(vi) - مهد الألعاب الأولمبية",
+            unesco_criteria_en:"Criteria (i)(ii)(iii)(iv)(vi) - Birthplace of the Olympic Games",
+            unesco_criteria_el:"Κριτήρια (i)(ii)(iii)(iv)(vi) - Γενέτειρα των Ολυμπιακών Αγώνων",
             info_ar:"أولمبيا مهد الألعاب الأولمبية القديمة التي بدأت عام 776 ق.م، واستمرت لـ12 قرناً.",
             info_en:"Olympia is the birthplace of the ancient Olympic Games which began in 776 BC, continuing for 12 centuries.",
             info_el:"Η Ολυμπία γενέτειρα των αρχαίων Ολυμπιακών Αγώνων από το 776 π.Χ.",
@@ -260,7 +266,11 @@
         },
         meteora: { 
             name_ar:"ميتيورا", name_en:"Meteora", name_el:"Μετέωρα", 
-            lat:"39.714100", lng:"21.631100", mapQuery:"39.7141,21.6311",
+            lat:"39.714100", lng:"21.631100",
+            unesco_date_ar:"1988", unesco_date_en:"1988", unesco_date_el:"1988",
+            unesco_criteria_ar:"معايير (i)(ii)(iv)(v)(vii) - أعجوبة طبيعية وثقافية",
+            unesco_criteria_en:"Criteria (i)(ii)(iv)(v)(vii) - Natural and cultural wonder",
+            unesco_criteria_el:"Κριτήρια (i)(ii)(iv)(v)(vii) - Φυσικό και πολιτιστικό θαύμα",
             info_ar:"ميتيورا تعني 'معلقة في الهواء'، تضم 6 أديرة على قمم صخور ارتفاعها 600 متر.",
             info_en:"Meteora means 'suspended in the air', with 6 monasteries on 600-meter rock pillars.",
             info_el:"Τα Μετέωρα σημαίνει 'αιωρούμενα', με 6 μοναστήρια σε βράχους 600 μέτρων.",
@@ -284,20 +294,20 @@
     
     const omanIntangible = [
         { icon:"☕", name_ar:"القهوة العمانية", name_en:"Omani Coffee", name_el:"Καφές Ομάν", desc_ar:"تقديم القهوة مع الهيل واللبان رمز للكرم والضيافة", desc_en:"Serving coffee with cardamom and frankincense, symbol of hospitality", desc_el:"Καφές με κάρδαμο και λιβάνι" },
-        { icon:"🕺", name_ar:"العرضة العمانية", name_en:"Omani Al-Arda", name_el:"Al-Arda", desc_ar:"رقصة حربية بالسيوف والطبول تعبر عن الشجاعة", desc_en:"War dance with swords and drums expressing courage", desc_el:"Πολεμικός χορός με σπαθιά" },
-        { icon:"🏺", name_ar:"صناعة الفخار", name_en:"Pottery", name_el:"Κεραμική", desc_ar:"صناعة يدوية متقنة تعود لآلاف السنين", desc_en:"Masterful handicraft dating back thousands of years", desc_el:"Αριστοτεχνική χειροτεχνία" }
+        { icon:"🕺", name_ar:"العرضة العمانية", name_en:"Omani Al-Arda", name_el:"Al-Arda", desc_ar:"رقصة حربية بالسيوف والطبول تعبر عن الشجاعة والفخر الوطني", desc_en:"War dance with swords and drums expressing courage and national pride", desc_el:"Πολεμικός χορός με σπαθιά και τύμπανα" },
+        { icon:"🏺", name_ar:"صناعة الفخار", name_en:"Pottery", name_el:"Κεραμική", desc_ar:"صناعة يدوية متقنة تعود لآلاف السنين في ولاية بهلا", desc_en:"Masterful handicraft dating back thousands of years in Bahla", desc_el:"Αριστοτεχνική χειροτεχνία χιλιάδων ετών" }
     ];
     
     const greeceIntangible = [
-        { icon:"🎭", name_ar:"الميديتيرانين", name_en:"Mediterranean Singing", name_el:"Μεσογειακό τραγούδι", desc_ar:"تقاليد غنائية بوليفونية تعبر عن التراث المتوسطي", desc_en:"Polyphonic singing traditions expressing Mediterranean heritage", desc_el:"Πολυφωνικές παραδόσεις" },
-        { icon:"💃", name_ar:"الرقصات اليونانية", name_en:"Greek Dances", name_el:"Ελληνικοί χοροί", desc_ar:"السيرتاكي والرقصات الشعبية رمز الفرح والكرم", desc_en:"Sirtaki and folk dances symbolizing joy and hospitality", desc_el:"Συρτάκι και παραδοσιακοί χοροί" },
-        { icon:"🍇", name_ar:"فيلوكسينيا", name_en:"Filoxenia", name_el:"Φιλοξενία", desc_ar:"حب الغريب وتكريم الضيف قيمة أساسية في الثقافة اليونانية", desc_en:"Love of strangers and honoring guests is a core Greek value", desc_el:"Αγάπη για τους ξένους" }
+        { icon:"🎭", name_ar:"الميديتيرانين", name_en:"Mediterranean Singing", name_el:"Μεσογειακό τραγούδι", desc_ar:"تقاليد غنائية بوليفونية تعبر عن التراث المتوسطي", desc_en:"Polyphonic singing traditions expressing Mediterranean heritage", desc_el:"Πολυφωνικές παραδόσεις τραγουδιού" },
+        { icon:"💃", name_ar:"الرقصات اليونانية", name_en:"Greek Dances", name_el:"Ελληνικοί χοροί", desc_ar:"السيرتاكي والرقصات الشعبية رمز الفرح والكرم اليوناني", desc_en:"Sirtaki and folk dances symbolizing Greek joy and hospitality", desc_el:"Συρτάκι και παραδοσιακοί χοροί" },
+        { icon:"🍇", name_ar:"فيلوكسينيا", name_en:"Filoxenia", name_el:"Φιλοξενία", desc_ar:"حب الغريب وتكريم الضيف قيمة أساسية في الثقافة اليونانية", desc_en:"Love of strangers and honoring guests is a core Greek value", desc_el:"Αγάπη για τους ξένους, βασική ελληνική αξία" }
     ];
     
     const sharedWords = [
-        { ar:"صندوق - σαντούκι (sandoúki)", en:"Sanduq - sandoúki", el:"σαντούκι - sandoúki", desc_ar:"📦 كلمة عربية انتقلت إلى اليونانية", desc_en:"📦 Arabic word passed to Greek", desc_el:"📦 Αραβική λέξη" },
-        { ar:"قلب - καρδιά (kardia)", en:"Heart - kardia", el:"καρδιά - kardia", desc_ar:"❤️ جذر سامي قديم مشترك", desc_en:"❤️ Ancient shared Semitic root", desc_el:"❤️ Αρχαία σημιτική ρίζα" },
-        { ar:"قيراط - καράτι (karati)", en:"Carat - karati", el:"καράτι - karati", desc_ar:"💎 وحدة قياس الذهب", desc_en:"💎 Gold measurement unit", desc_el:"💎 Μονάδα μέτρησης χρυσού" }
+        { ar:"صندوق - σαντούκι (sandoúki)", en:"Sanduq - sandoúki", el:"σαντούκι - sandoúki", desc_ar:"📦 كلمة عربية انتقلت إلى اليونانية عبر التجارة البحرية", desc_en:"📦 Arabic word passed to Greek through maritime trade", desc_el:"📦 Αραβική λέξη που πέρασε στα ελληνικά" },
+        { ar:"قلب - καρδιά (kardia)", en:"Heart - kardia", el:"καρδιά - kardia", desc_ar:"❤️ جذر سامي قديم مشترك بين اللغتين", desc_en:"❤️ Ancient shared Semitic root between the two languages", desc_el:"❤️ Αρχαία σημιτική ρίζα" },
+        { ar:"قيراط - καράτι (karati)", en:"Carat - karati", el:"καράτι - karati", desc_ar:"💎 وحدة قياس الذهب والأحجار الكريمة", desc_en:"💎 Unit for measuring gold and gemstones", desc_el:"💎 Μονάδα μέτρησης χρυσού" }
     ];
 
     let currentLang = 'ar';
@@ -333,9 +343,9 @@
     window.showInfo = function(siteId, country) {
         lastCountry = country;
         const s = sitesData[siteId];
-        // خريطة جوجل دقيقة مع اللغة
-        const googleMapEmbed = `https://www.google.com/maps/embed/v1/place?key=AIzaSyCvQ7KQLX7q7q7q7q7q7q7q7q7q7q7q7&q=${s.mapQuery}&language=${currentLang === 'ar' ? 'ar' : (currentLang === 'en' ? 'en' : 'el')}`;
-        const googleMapSearch = `https://www.google.com/maps/search/?api=1&query=${s.mapQuery}&hl=${currentLang === 'ar' ? 'ar' : (currentLang === 'en' ? 'en' : 'el')}`;
+        const googleMapSearch = `https://www.google.com/maps/search/?api=1&query=${s.lat},${s.lng}`;
+        // استخدام OpenStreetMap (مجاني ولا يحتاج مفتاح)
+        const osmMap = `https://www.openstreetmap.org/export/embed.html?bbox=${parseFloat(s.lng)-0.02},${parseFloat(s.lat)-0.02},${parseFloat(s.lng)+0.02},${parseFloat(s.lat)+0.02}&layer=mapnik&marker=${s.lat},${s.lng}`;
         
         document.getElementById('info-content').innerHTML = `
             <h2>${s[`name_${currentLang}`]}</h2>
@@ -346,9 +356,9 @@
             ${s.unesco_criteria_ar ? `<div class="detail-text"><strong>${translations[currentLang].unesco_criteria}:</strong> ${s[`unesco_criteria_${currentLang}`]}</div>` : ''}
             <div class="detail-text"><strong>${translations[currentLang].best_time}:</strong> ${s[`visit_${currentLang}`]}</div>
             <div class="map-container">
-                <iframe src="${googleMapEmbed}" allowfullscreen loading="lazy"></iframe>
+                <iframe src="${osmMap}" allowfullscreen loading="lazy"></iframe>
             </div>
-            <a href="${googleMapSearch}" target="_blank" class="map-btn">${translations[currentLang].open_map}</a>
+            <a href="${googleMapSearch}" target="_blank" class="map-btn">🗺️ ${translations[currentLang].open_map}</a>
         `;
         showPage('info');
     };
